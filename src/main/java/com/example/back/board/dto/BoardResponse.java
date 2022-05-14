@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardResponse {
 	private Long id;
-	private String name;
+	private String userName;
 	//private Long workbookId;
 	private String title;
 	private String description;
@@ -21,7 +21,7 @@ public class BoardResponse {
 	@Builder
 	public BoardResponse(Long id, String name, /*Long workbookId,*/ String title, String description) {
 		this.id = id;
-		this.name = name;
+		this.userName = name;
 		//this.workbookId = workbookId;
 		this.title = title;
 		this.description = description;
