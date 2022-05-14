@@ -1,7 +1,8 @@
-package com.example.back.user.presentation;
+package com.example.back.user.api;
 
 
 import com.example.back.user.domain.User;
+import com.example.back.user.dto.UserResponse;
 import com.example.back.util.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

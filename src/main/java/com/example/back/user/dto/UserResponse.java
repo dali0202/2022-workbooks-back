@@ -1,4 +1,4 @@
-package com.example.back.user.presentation;
+package com.example.back.user.dto;
 
 import com.example.back.user.domain.User;
 import lombok.AccessLevel;
