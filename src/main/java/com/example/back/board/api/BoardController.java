@@ -20,7 +20,7 @@ import java.util.List;
 public class BoardController {
 	private final BoardService boardService;
 	private final JwtUtils jwtUtils;
-	private static final String REDIRECT_URL = "/api/boards/%d";
+	private static final String REDIRECT_URL = "api/boards/%d";
 	@GetMapping
 	public ResponseEntity<List<BoardResponse>> findBoards() {
 		return ResponseEntity.ok(boardService.findAllBoards());
@@ -36,22 +36,23 @@ public class BoardController {
 		User user = jwtUtils.getUserByToken(request);
 		Long boardId = boardService.save(user, boardRequest);
 		String redirectUrl = String.format(REDIRECT_URL, boardId);
+		return ResponseEntity.created(URI.create(redirectUrl)).body(boardId);
+	}
+
+	@PatchMapping("/edit/{id}")
+	public ResponseEntity<?> updateBoard(@PathVariable Long id, @RequestBody BoardRequest boardRequest, HttpServletRequest request) {
+		User user = jwtUtils.getUserByToken(request);
+		boardService.update(user, id, boardRequest);
+		String redirectUrl = String.format(REDIRECT_URL, id);
 
 		return ResponseEntity.created(URI.create(redirectUrl)).build();
 	}
-//
-//	@PatchMapping("/edit/{id}")
-//	public ResponseEntity<?> updateBoard(@CurrentUser User user, @PathVariable Long id, @RequestBody BoardRequest boardRequest) {
-//		boardService.update(BoardAssembler.boardUpdateRequestDto(user, id, boardRequest));
-//		String redirectUrl = String.format(REDIRECT_URL, id);
-//
-//		return ResponseEntity.created(URI.create(redirectUrl)).build();
-//	}
-//
-//	@DeleteMapping("/{id}")
-//	public ResponseEntity<?> deleteBoard(@CurrentUser User user, @PathVariable Long id) {
-//		boardService.delete(user, id);
-//
-//		return ResponseEntity.noContent().build();
-//	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteBoard(@PathVariable Long id, HttpServletRequest request) {
+		User user = jwtUtils.getUserByToken(request);
+		boardService.delete(user, id);
+
+		return ResponseEntity.noContent().build();
+	}
 }

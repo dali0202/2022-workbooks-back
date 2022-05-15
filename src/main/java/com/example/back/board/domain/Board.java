@@ -1,6 +1,7 @@
 package com.example.back.board.domain;
 
 
+import com.example.back.board.dto.BoardRequest;
 import com.example.back.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -37,9 +38,9 @@ public class Board {
 		this.description = description;
 	}
 
-//	public void update(BoardUpdateRequestDto requestDto, Workbook workbook) {
-//		this.title = requestDto.getTitle();
-//		this.description = requestDto.getDescription();
-//		this.workbook = workbook;
-//	}
+	public void update(BoardRequest boardRequest/*, Workbook workbook*/) {
+		this.title = boardRequest.getTitle();
+		this.description = boardRequest.getDescription();
+		//this.workbook = workbook;
+	}
 }
