@@ -3,9 +3,11 @@ package com.example.back.board.service;
 import com.example.back.board.domain.Board;
 import com.example.back.board.domain.BoardRepository;
 import com.example.back.board.dto.BoardDetailResponse;
+import com.example.back.board.dto.BoardRequest;
 import com.example.back.board.dto.BoardResponse;
 import com.example.back.exception.EntityNotFoundException;
 import com.example.back.exception.ErrorCode;
+import com.example.back.user.domain.User;
 import com.example.back.user.domain.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -25,17 +27,17 @@ public class BoardService {
 		return BoardResponse.listOf(boardRepository.findAll());
 	}
 
-//	@Transactional
-//	public BoardDetailResponse findBoard(Long id) {
-//		Board board = findBoardById(id);
-//		return BoardDetailResponse.of(board);
-//	}
+	@Transactional
+	public BoardResponse findBoard(Long id) {
+		Board board = findBoardById(id);
+		return BoardResponse.of(board);
+	}
 
-//	@Transactional
-//	public Long write(BoardRequestDto boardRequestDto) {
-//		Board savedBoard = boardRepository.save(createBoard(boardRequestDto));
-//		return savedBoard.getId();
-//	}
+	@Transactional
+	public Long save(User user, BoardRequest boardRequest) {
+		Board savedBoard = boardRepository.save(boardRequest.toBoard(user));
+		return savedBoard.getId();
+	}
 //
 //	@Transactional
 //	public Long update(BoardUpdateRequestDto boardUpdateRequestDto) {
