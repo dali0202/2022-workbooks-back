@@ -21,5 +21,6 @@ public class WorkbookService {
         System.out.println("upper bound: " + rangeRequest.getLowerBound());
         System.out.println("lower bound: " + rangeRequest.getUpperBound());
         System.out.println("unit: " + rangeRequest.getSelectedUnit());
+        System.out.println("point: " + rangeRequest.getSelectedPoint());
     }
 }

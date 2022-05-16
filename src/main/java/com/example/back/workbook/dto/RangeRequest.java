@@ -12,4 +12,5 @@ public class RangeRequest {
     private int lowerBound;
     private int upperBound;
     private List<Integer> selectedUnit;
+    private List<Integer> selectedPoint;
 }
