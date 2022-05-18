@@ -19,9 +19,13 @@ public class QuestionResponse {
     private byte num;
     private short year;
     private int unit;
+    private int answer;
+    private String descriptionPath;
+    private String solutionPath;
 
     @Builder
-    public QuestionResponse(Long id, double answerRate, int point, byte grade, byte month, byte num, short year, int unit) {
+
+    public QuestionResponse(Long id, double answerRate, int point, byte grade, byte month, byte num, short year, int unit, int answer, String descriptionPath, String solutionPath) {
         this.id = id;
         this.answerRate = answerRate;
         this.point = point;
@@ -30,7 +34,11 @@ public class QuestionResponse {
         this.num = num;
         this.year = year;
         this.unit = unit;
+        this.answer = answer;
+        this.descriptionPath = descriptionPath;
+        this.solutionPath = solutionPath;
     }
+
 
     private static QuestionResponse of(Question question) {
     return QuestionResponse.builder()
@@ -42,6 +50,9 @@ public class QuestionResponse {
             .num(question.getQuestionSource().getNum())
             .year(question.getQuestionSource().getYear())
             .unit(question.getUnit())
+            .answer(question.getAnswer())
+            .descriptionPath(question.getRemoteStoragePath().getDescriptionPath())
+            .solutionPath(question.getRemoteStoragePath().getSolutionPath())
             .build();
 }
 

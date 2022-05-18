@@ -24,7 +24,7 @@ public class Question {
 
     private double answerRate;
 
-    private short answer;
+    private int answer;
 
     private int unit;
 }
