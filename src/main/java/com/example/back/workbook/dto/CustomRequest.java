@@ -6,5 +6,6 @@ import java.util.List;
 
 @Getter
 public class CustomRequest {
+    private String title;
     private List<Integer> selectedQuestionId;
 }

@@ -20,11 +20,11 @@ public class Question {
     @Embedded
     private RemoteStoragePath remoteStoragePath;
 
-    private byte point;
+    private int point;
 
     private double answerRate;
 
     private short answer;
 
-    private short tag;
+    private int unit;
 }

@@ -13,15 +13,15 @@ import java.util.List;
 public class QuestionResponse {
     private Long id;
     private double answerRate;
-    private byte point;
+    private int point;
     private byte grade;
     private byte month;
     private byte num;
     private short year;
-    private short tag;
+    private int unit;
 
     @Builder
-    public QuestionResponse(Long id, double answerRate, byte point, byte grade, byte month, byte num, short year, short tag) {
+    public QuestionResponse(Long id, double answerRate, int point, byte grade, byte month, byte num, short year, int unit) {
         this.id = id;
         this.answerRate = answerRate;
         this.point = point;
@@ -29,7 +29,7 @@ public class QuestionResponse {
         this.month = month;
         this.num = num;
         this.year = year;
-        this.tag = tag;
+        this.unit = unit;
     }
 
     private static QuestionResponse of(Question question) {
@@ -41,7 +41,7 @@ public class QuestionResponse {
             .month(question.getQuestionSource().getMonth())
             .num(question.getQuestionSource().getNum())
             .year(question.getQuestionSource().getYear())
-            .tag(question.getTag())
+            .unit(question.getUnit())
             .build();
 }
 

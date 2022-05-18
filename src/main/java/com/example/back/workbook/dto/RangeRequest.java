@@ -8,6 +8,7 @@ import java.util.Map;
 
 @Getter
 public class RangeRequest {
+    private String title;
     private int questionNum;
     private int lowerBound;
     private int upperBound;

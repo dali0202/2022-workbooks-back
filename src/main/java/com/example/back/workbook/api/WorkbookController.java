@@ -6,16 +6,15 @@ import com.example.back.workbook.domain.Workbook;
 import com.example.back.workbook.dto.CustomRequest;
 import com.example.back.workbook.dto.MockRequest;
 import com.example.back.workbook.dto.RangeRequest;
+import com.example.back.workbook.dto.WorkbookResponse;
 import com.example.back.workbook.service.WorkbookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +25,10 @@ public class WorkbookController {
 
     private final JwtUtils jwtUtils;
     //private final StorageService storageService;
+    @GetMapping
+    public ResponseEntity<List<WorkbookResponse>> findWorkbooks() {
+        return ResponseEntity.ok(workbookService.findAllBoards());
+    }
     @PostMapping("/mock")
     public ResponseEntity<?> createMock(@RequestBody MockRequest mockRequest, HttpServletRequest request) {
         User user = jwtUtils.getUserByToken(request);

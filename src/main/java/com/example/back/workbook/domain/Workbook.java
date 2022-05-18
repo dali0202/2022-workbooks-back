@@ -24,9 +24,12 @@ public class Workbook {
 
     private boolean isMock;
 
+    private String title;
+
     @Builder
-    public Workbook(User user, boolean isMock) {
+    public Workbook(User user, boolean isMock, String title) {
         this.user = user;
         this.isMock = isMock;
+        this.title = title;
     }
 }

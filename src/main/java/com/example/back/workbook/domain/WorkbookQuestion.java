@@ -24,9 +24,9 @@ public class WorkbookQuestion {
 	@JoinColumn(name = "question_id")
 	private Question question;
 
-	private byte num;
+	private int num;
 	@Builder
-	public WorkbookQuestion(Workbook workbook, Question question, byte num) {
+	public WorkbookQuestion(Workbook workbook, Question question, int num) {
 		this.workbook = workbook;
 		this.question = question;
 		this.num = num;

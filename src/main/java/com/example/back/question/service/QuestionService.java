@@ -12,9 +12,8 @@ import java.util.List;
 @RequiredArgsConstructor(access = AccessLevel.PUBLIC)
 @Service
 public class QuestionService {
-    //private final QuestionRepository questionRepository;
     private final QuestionRepositoryImpl questionRepository;
-    public List<QuestionResponse> findByCondition(byte grade, byte month, byte point) {
+    public List<QuestionResponse> findByCondition(byte grade, byte month, int point) {
         List<Question> questions = questionRepository.searchQuestion(grade, month, point);
         return QuestionResponse.listOf(questions);
     }
