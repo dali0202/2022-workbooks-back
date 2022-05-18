@@ -29,7 +29,7 @@ public class WorkbookService {
     private final StorageRepository storageRepository;
     private final WorkbookQuestionRepository workbookQuestionRepository;
 
-    public List<WorkbookResponse> findAllBoards() {
+    public List<WorkbookResponse> findAllWorkbooks() {
         return(WorkbookResponse.listOf(workbookRepository.findAll()));
     }
     public void saveMock(User user, MockRequest mockRequest) {
@@ -50,6 +50,8 @@ public class WorkbookService {
     }
 
     // 만들어진 Workbook 엔티티를 불필요하게 dto로 변환하여 Storage의 서비스로 전달하기보다 여기서 처리.
+    // User에 양방향 걸고 편의메서드 만들어놓고 workbook 인자로 받으면 로직 처리가능할듯.
+    // ex. user.addWorkbook(workbook)
     private void saveWorkbookInStorage(User user, Workbook workbook) {
         storageRepository.save(Storage
                 .builder()

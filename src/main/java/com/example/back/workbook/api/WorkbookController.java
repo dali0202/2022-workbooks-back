@@ -2,7 +2,6 @@ package com.example.back.workbook.api;
 
 import com.example.back.user.domain.User;
 import com.example.back.util.JwtUtils;
-import com.example.back.workbook.domain.Workbook;
 import com.example.back.workbook.dto.CustomRequest;
 import com.example.back.workbook.dto.MockRequest;
 import com.example.back.workbook.dto.RangeRequest;
@@ -27,7 +26,7 @@ public class WorkbookController {
     //private final StorageService storageService;
     @GetMapping
     public ResponseEntity<List<WorkbookResponse>> findWorkbooks() {
-        return ResponseEntity.ok(workbookService.findAllBoards());
+        return ResponseEntity.ok(workbookService.findAllWorkbooks());
     }
     @PostMapping("/mock")
     public ResponseEntity<?> createMock(@RequestBody MockRequest mockRequest, HttpServletRequest request) {
