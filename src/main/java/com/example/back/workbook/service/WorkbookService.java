@@ -24,41 +24,29 @@ import java.util.List;
 @Service
 public class WorkbookService {
     private final WorkbookRepository workbookRepository;
+    private final QuestionRepository questionRepository;
     private final QuestionRepositoryImpl questionRepositoryImpl;
     private final StorageRepository storageRepository;
-
     private final WorkbookQuestionRepository workbookQuestionRepository;
 
     public List<WorkbookResponse> findAllBoards() {
         return(WorkbookResponse.listOf(workbookRepository.findAll()));
     }
     public void saveMock(User user, MockRequest mockRequest) {
-        System.out.println("grade: " + mockRequest.getGrade());
-        System.out.println("month: " + mockRequest.getMonth());
+        Workbook workbook = createDefaultWorkbook(mockRequest.getTitle(), user, true);
     }
 
     public void saveRange(User user, RangeRequest rangeRequest) {
+        Workbook workbook = createDefaultWorkbook(rangeRequest.getTitle(), user, false);
         List<Question> questions = questionRepositoryImpl.searchQuestionByRange(rangeRequest);
-        Workbook savedWorkbook = workbookRepository.save(Workbook
-                .builder()
-                .title(rangeRequest.getTitle())
-                .user(user)
-                .isMock(false)
-                .build());
-        int i = 1;
-        for (Question question : questions) {
-        workbookQuestionRepository.save(WorkbookQuestion.builder().question(question).workbook(savedWorkbook).num(i).build());
-        i++;}
-        saveWorkbookInStorage(user, savedWorkbook);
+        saveQuestionInWorkbook(workbook, questions);
+        saveWorkbookInStorage(user, workbook);
     }
-
     public void saveCustom(User user, CustomRequest customRequest) {
-        Workbook savedWorkbook = workbookRepository.save(Workbook
-                .builder()
-                .title(customRequest.getTitle())
-                .user(user)
-                .isMock(false)
-                .build());
+        Workbook workbook = createDefaultWorkbook(customRequest.getTitle(), user, false);
+        List<Question> questions = questionRepository.findAllById(customRequest.getSelectedQuestionId());
+        saveQuestionInWorkbook(workbook, questions);
+        saveWorkbookInStorage(user, workbook);
     }
 
     // 만들어진 Workbook 엔티티를 불필요하게 dto로 변환하여 Storage의 서비스로 전달하기보다 여기서 처리.
@@ -69,5 +57,23 @@ public class WorkbookService {
                 .workbook(workbook)
                 .build());
     }
-
+    private Workbook createDefaultWorkbook(String title, User user, boolean isMock) {
+        return Workbook
+                .builder()
+                .title(title)
+                .user(user)
+                .isMock(isMock)
+                .build();
+    }
+    private void saveQuestionInWorkbook(Workbook workbook, List<Question> questions) {
+        for (int num = 0; num < questions.size(); num++) {
+            workbookQuestionRepository.save(
+                    WorkbookQuestion
+                            .builder()
+                            .question(questions.get(num))
+                            .workbook(workbook)
+                            .num(num + 1)
+                            .build());
+        }
+    }
 }
