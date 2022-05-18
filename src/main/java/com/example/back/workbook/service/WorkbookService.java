@@ -1,5 +1,7 @@
 package com.example.back.workbook.service;
 
+import com.example.back.exception.EntityNotFoundException;
+import com.example.back.exception.ErrorCode;
 import com.example.back.question.domain.Question;
 import com.example.back.question.domain.QuestionRepository;
 import com.example.back.question.domain.QuestionRepositoryImpl;
@@ -10,14 +12,12 @@ import com.example.back.workbook.domain.Workbook;
 import com.example.back.workbook.domain.WorkbookQuestion;
 import com.example.back.workbook.domain.WorkbookQuestionRepository;
 import com.example.back.workbook.domain.WorkbookRepository;
-import com.example.back.workbook.dto.CustomRequest;
-import com.example.back.workbook.dto.MockRequest;
-import com.example.back.workbook.dto.RangeRequest;
-import com.example.back.workbook.dto.WorkbookResponse;
+import com.example.back.workbook.dto.*;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor(access = AccessLevel.PUBLIC)
@@ -28,6 +28,14 @@ public class WorkbookService {
     private final QuestionRepositoryImpl questionRepositoryImpl;
     private final StorageRepository storageRepository;
     private final WorkbookQuestionRepository workbookQuestionRepository;
+
+    public WorkbookDetailResponse findWorkbook(Long id) {
+        Workbook workbook = findWorkbookById(id);
+        List<WorkbookQuestion> workbookQuestions = workbookQuestionRepository.findByWorkbook(workbook);
+        List<Question> questions = new ArrayList();
+        workbookQuestions.forEach(workbookQuestion -> questions.add(workbookQuestion.getQuestion()));
+        return WorkbookDetailResponse.of(workbook, questions);
+    }
 
     public List<WorkbookResponse> findAllWorkbooks() {
         return(WorkbookResponse.listOf(workbookRepository.findAll()));
@@ -78,4 +86,9 @@ public class WorkbookService {
                             .build());
         }
     }
+
+    private Workbook findWorkbookById(Long id) {
+        return workbookRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(ErrorCode.WORKBOOK_NOT_FOUND));
+	}
 }
