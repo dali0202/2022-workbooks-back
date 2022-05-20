@@ -3,6 +3,7 @@ package com.example.back.question.domain;
 import com.example.back.workbook.domain.QWorkbook;
 import com.example.back.workbook.dto.RangeRequest;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.core.types.dsl.NumberExpression;
@@ -22,9 +23,12 @@ public class QuestionRepositoryImpl implements QuestionRepositoryCustom {
     QQuestion question = QQuestion.question;
 
     @Override
-    public List<Question> searchQuestion(byte grade, byte month, int point) {
+    public List<Question> searchQuestion(byte grade, byte month, int point, int page, int size, OrderSpecifier orderSpecifier) {
         return queryFactory
                 .selectFrom(question)
+                .offset(page)
+                .limit(size)
+                .orderBy(orderSpecifier)
                 .where(gradeEquals(grade),
                         monthEquals(month),
                         pointEquals(point))
