@@ -1,5 +1,6 @@
 package com.example.back.workbook.domain;
 
+import com.example.back.common.domain.BaseTimeEntity;
 import com.example.back.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Workbook {
+public class Workbook extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
