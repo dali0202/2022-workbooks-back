@@ -69,12 +69,14 @@ public class WorkbookService {
                 .build());
     }
     private Workbook createDefaultWorkbook(String title, User user, int type) {
-        return Workbook
+        Workbook workbook = Workbook
                 .builder()
                 .title(title)
                 .user(user)
                 .type(type)
                 .build();
+        workbookRepository.save(workbook);
+        return workbook;
     }
     private void saveQuestionInWorkbook(Workbook workbook, List<Question> questions) {
         for (int num = 0; num < questions.size(); num++) {
