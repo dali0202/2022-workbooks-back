@@ -42,17 +42,17 @@ public class WorkbookService {
         return(WorkbookResponse.listOf(workbookRepository.findAll()));
     }
     public void saveMock(User user, MockRequest mockRequest) {
-        Workbook workbook = createDefaultWorkbook(mockRequest.getTitle(), user, true);
+        Workbook workbook = createDefaultWorkbook(mockRequest.getTitle(), user, 0);
     }
 
     public void saveRange(User user, RangeRequest rangeRequest) {
-        Workbook workbook = createDefaultWorkbook(rangeRequest.getTitle(), user, false);
+        Workbook workbook = createDefaultWorkbook(rangeRequest.getTitle(), user, 1);
         List<Question> questions = questionRepositoryImpl.searchQuestionByRange(rangeRequest);
         saveQuestionInWorkbook(workbook, questions);
         saveWorkbookInStorage(user, workbook);
     }
     public void saveCustom(User user, CustomRequest customRequest) {
-        Workbook workbook = createDefaultWorkbook(customRequest.getTitle(), user, false);
+        Workbook workbook = createDefaultWorkbook(customRequest.getTitle(), user, 2);
         List<Question> questions = questionRepository.findAllById(customRequest.getSelectedQuestionId());
         saveQuestionInWorkbook(workbook, questions);
         saveWorkbookInStorage(user, workbook);
@@ -68,12 +68,12 @@ public class WorkbookService {
                 .workbook(workbook)
                 .build());
     }
-    private Workbook createDefaultWorkbook(String title, User user, boolean isMock) {
+    private Workbook createDefaultWorkbook(String title, User user, int type) {
         return Workbook
                 .builder()
                 .title(title)
                 .user(user)
-                .isMock(isMock)
+                .type(type)
                 .build();
     }
     private void saveQuestionInWorkbook(Workbook workbook, List<Question> questions) {

@@ -23,14 +23,14 @@ public class Workbook extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private boolean isMock;
+    private int type;
 
     private String title;
 
     @Builder
-    public Workbook(User user, boolean isMock, String title) {
+    public Workbook(User user, int type, String title) {
         this.user = user;
-        this.isMock = isMock;
+        this.type = type;
         this.title = title;
     }
 }
