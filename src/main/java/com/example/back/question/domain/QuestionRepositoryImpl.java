@@ -26,7 +26,7 @@ public class QuestionRepositoryImpl implements QuestionRepositoryCustom {
     public List<Question> searchQuestion(byte grade, byte month, int point, int page, int size, OrderSpecifier orderSpecifier) {
         return queryFactory
                 .selectFrom(question)
-                .offset(page)
+                .offset(page * size)
                 .limit(size)
                 .orderBy(orderSpecifier)
                 .where(gradeEquals(grade),
