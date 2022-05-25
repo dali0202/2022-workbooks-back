@@ -23,8 +23,8 @@ public class WorkbookController {
     //private final StorageService storageService;
 
     @GetMapping
-    public ResponseEntity<List<WorkbookResponse>> findWorkbooks() {
-        return ResponseEntity.ok(workbookService.findAllWorkbooks());
+    public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam String keyword, @RequestParam int page, @RequestParam int size) {
+        return ResponseEntity.ok(workbookService.findByCondition(keyword, page, size));
     }
 
     @GetMapping("/{id}")

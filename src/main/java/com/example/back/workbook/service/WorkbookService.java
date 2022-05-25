@@ -5,13 +5,11 @@ import com.example.back.exception.ErrorCode;
 import com.example.back.question.domain.Question;
 import com.example.back.question.domain.QuestionRepository;
 import com.example.back.question.domain.QuestionRepositoryImpl;
+import com.example.back.question.dto.QuestionResponse;
 import com.example.back.storage.domain.Storage;
 import com.example.back.storage.domain.StorageRepository;
 import com.example.back.user.domain.User;
-import com.example.back.workbook.domain.Workbook;
-import com.example.back.workbook.domain.WorkbookQuestion;
-import com.example.back.workbook.domain.WorkbookQuestionRepository;
-import com.example.back.workbook.domain.WorkbookRepository;
+import com.example.back.workbook.domain.*;
 import com.example.back.workbook.dto.*;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +22,7 @@ import java.util.List;
 @Service
 public class WorkbookService {
     private final WorkbookRepository workbookRepository;
+    private final WorkbookRepositoryImpl workbookRepositoryImpl;
     private final QuestionRepository questionRepository;
     private final QuestionRepositoryImpl questionRepositoryImpl;
     private final StorageRepository storageRepository;
@@ -38,8 +37,9 @@ public class WorkbookService {
         return WorkbookDetailResponse.of(workbook, questions);
     }
 
-    public List<WorkbookResponse> findAllWorkbooks() {
-        return(WorkbookResponse.listOf(workbookRepository.findAll()));
+    public List<WorkbookResponse> findByCondition(String keyword, int page, int size) {
+        List<Workbook> workbooks = workbookRepositoryImpl.searchWorkbook(keyword, page, size);
+        return WorkbookResponse.listOf(workbooks);
     }
     public void saveMock(User user, MockRequest mockRequest) {
         Workbook workbook = createDefaultWorkbook(mockRequest.getTitle(), user, 0);
