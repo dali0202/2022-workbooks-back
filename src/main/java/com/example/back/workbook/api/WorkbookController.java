@@ -21,14 +21,13 @@ public class WorkbookController {
     private final JwtUtils jwtUtils;
     //private final StorageService storageService;
 
+//    @GetMapping
+//    public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam String keyword, @RequestParam int page, @RequestParam int size) {
+//        return ResponseEntity.ok(workbookService.findByCondition(keyword, page, size));
+//    }
     @GetMapping
-    public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam String keyword, @RequestParam int page, @RequestParam int size) {
-        return ResponseEntity.ok(workbookService.findByCondition(keyword, page, size));
-    }
-    @GetMapping("/v1")
-    public ResponseEntity<List<WorkbookResponse>> findWorkbooks2(@RequestParam String keyword, @RequestParam(defaultValue = "1000") int lastWorkbookId, @RequestParam int size) {
-        System.out.println(lastWorkbookId);
-        return ResponseEntity.ok(workbookService.findByCondition2(keyword, lastWorkbookId, size));
+    public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "0") int lastWorkbookId, @RequestParam int size) {
+        return ResponseEntity.ok(workbookService.findByCondition(keyword, lastWorkbookId, size));
     }
     @GetMapping("/{id}")
     public ResponseEntity<WorkbookDetailResponse> findWorkbook(@PathVariable Long id) {

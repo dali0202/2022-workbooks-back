@@ -7,6 +7,6 @@ import com.querydsl.core.types.OrderSpecifier;
 import java.util.List;
 
 public interface WorkbookRepositoryCustom {
-    List<Workbook> searchWorkbook(String keyword, int page, int size);
-    List<Workbook> searchWorkbook2(String keyword, int lastWorkbookId, int size);
+//    List<Workbook> searchWorkbook(String keyword, int page, int size);
+    List<Workbook> searchWorkbook(String keyword, int lastWorkbookId, int size);
 }

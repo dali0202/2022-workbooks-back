@@ -4,6 +4,7 @@ import com.example.back.question.domain.QQuestion;
 import com.example.back.question.domain.Question;
 import com.example.back.question.domain.QuestionRepositoryCustom;
 import com.example.back.workbook.dto.RangeRequest;
+import com.nimbusds.oauth2.sdk.util.StringUtils;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -23,23 +24,29 @@ public class WorkbookRepositoryImpl implements WorkbookRepositoryCustom {
 
     QWorkbook workbook = QWorkbook.workbook;
 
-    @Override
-    public List<Workbook> searchWorkbook(String keyword, int page, int size) {
+//    @Override
+//    public List<Workbook> searchWorkbook(String keyword, int page, int size) {
+//        return queryFactory
+//                .selectFrom(workbook)
+//                .offset(page)
+//                .limit(size)
+//                .where(workbook.title.contains(keyword))
+//                .orderBy(workbook.createdDate.desc())
+//                .fetch();
+//    }
+
+    public List<Workbook> searchWorkbook(String keyword, int lastWorkbookId, int size) {
         return queryFactory
                 .selectFrom(workbook)
-                .offset(page)
                 .limit(size)
-                .where(workbook.title.contains(keyword))
+                .where(keywordContains(keyword), workbookIdLessThan(lastWorkbookId))
                 .orderBy(workbook.createdDate.desc())
                 .fetch();
     }
-
-    public List<Workbook> searchWorkbook2(String keyword, int lastWorkbookId, int size) {
-        return queryFactory
-                .selectFrom(workbook)
-                .limit(size)
-                .where(workbook.title.contains(keyword), workbook.id.lt(lastWorkbookId))
-                .orderBy(workbook.createdDate.desc())
-                .fetch();
+    private BooleanExpression keywordContains(String keyword) {
+        return !StringUtils.isBlank(keyword) ? workbook.title.contains(keyword) : null;
+    }
+    private BooleanExpression workbookIdLessThan(int lastWorkbookId) {
+        return (lastWorkbookId != 0) ? workbook.id.lt(lastWorkbookId) : null;
     }
 }
