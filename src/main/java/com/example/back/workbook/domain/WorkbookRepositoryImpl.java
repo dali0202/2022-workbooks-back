@@ -33,4 +33,13 @@ public class WorkbookRepositoryImpl implements WorkbookRepositoryCustom {
                 .orderBy(workbook.createdDate.desc())
                 .fetch();
     }
+
+    public List<Workbook> searchWorkbook2(String keyword, int lastWorkbookId, int size) {
+        return queryFactory
+                .selectFrom(workbook)
+                .limit(size)
+                .where(workbook.title.contains(keyword), workbook.id.lt(lastWorkbookId))
+                .orderBy(workbook.createdDate.desc())
+                .fetch();
+    }
 }

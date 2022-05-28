@@ -1,6 +1,5 @@
 package com.example.back.workbook.api;
 
-import com.example.back.board.dto.BoardResponse;
 import com.example.back.user.domain.User;
 import com.example.back.util.JwtUtils;
 import com.example.back.workbook.dto.*;
@@ -26,7 +25,11 @@ public class WorkbookController {
     public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam String keyword, @RequestParam int page, @RequestParam int size) {
         return ResponseEntity.ok(workbookService.findByCondition(keyword, page, size));
     }
-
+    @GetMapping("/v1")
+    public ResponseEntity<List<WorkbookResponse>> findWorkbooks2(@RequestParam String keyword, @RequestParam(defaultValue = "1000") int lastWorkbookId, @RequestParam int size) {
+        System.out.println(lastWorkbookId);
+        return ResponseEntity.ok(workbookService.findByCondition2(keyword, lastWorkbookId, size));
+    }
     @GetMapping("/{id}")
     public ResponseEntity<WorkbookDetailResponse> findWorkbook(@PathVariable Long id) {
         return ResponseEntity.ok(workbookService.findWorkbook(id));

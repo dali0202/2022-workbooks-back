@@ -41,6 +41,12 @@ public class WorkbookService {
         List<Workbook> workbooks = workbookRepositoryImpl.searchWorkbook(keyword, page, size);
         return WorkbookResponse.listOf(workbooks);
     }
+
+    public List<WorkbookResponse> findByCondition2(String keyword, int lastWorkbookId, int size) {
+        List<Workbook> workbooks = workbookRepositoryImpl.searchWorkbook2(keyword, lastWorkbookId, size);
+        return WorkbookResponse.listOf(workbooks);
+    }
+
     public void saveMock(User user, MockRequest mockRequest) {
         Workbook workbook = createDefaultWorkbook(mockRequest.getTitle(), user, 0);
     }
