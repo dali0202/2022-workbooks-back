@@ -7,6 +7,6 @@ import com.querydsl.core.types.OrderSpecifier;
 import java.util.List;
 
 public interface QuestionRepositoryCustom {
-    List<Question> searchQuestion(byte grade, byte month, int point, int page, int size, OrderSpecifier orderSpecifier);
+    List<Question> searchQuestion(int grade, int month, int point, int page, int size, OrderSpecifier orderSpecifier);
     List<Question> searchQuestionByRange(RangeRequest request);
 }

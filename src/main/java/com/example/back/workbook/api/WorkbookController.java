@@ -21,10 +21,6 @@ public class WorkbookController {
     private final JwtUtils jwtUtils;
     //private final StorageService storageService;
 
-//    @GetMapping
-//    public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam String keyword, @RequestParam int page, @RequestParam int size) {
-//        return ResponseEntity.ok(workbookService.findByCondition(keyword, page, size));
-//    }
     @GetMapping
     public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "0") int lastWorkbookId, @RequestParam int size) {
         return ResponseEntity.ok(workbookService.findByCondition(keyword, lastWorkbookId, size));

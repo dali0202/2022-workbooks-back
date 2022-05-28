@@ -17,7 +17,7 @@ public class QuestionController {
 
     @GetMapping
     public ResponseEntity<List<QuestionResponse>> findQuestions(
-            @RequestParam byte grade, @RequestParam byte month, @RequestParam byte point, @RequestParam int page, @RequestParam int size, @RequestParam Sort sort) {
+            @RequestParam(defaultValue = "0") int grade, @RequestParam(defaultValue = "0") int month, @RequestParam(defaultValue = "0") int point, @RequestParam(defaultValue = "0") int page, @RequestParam int size, @RequestParam Sort sort) {
         return ResponseEntity.ok(questionService.findByCondition(grade, month, point, page, size, sort));
     }
 }

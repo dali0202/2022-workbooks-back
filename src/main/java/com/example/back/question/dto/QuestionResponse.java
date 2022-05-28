@@ -14,18 +14,17 @@ public class QuestionResponse {
     private Long id;
     private double answerRate;
     private int point;
-    private byte grade;
-    private byte month;
-    private byte num;
-    private short year;
+    private int grade;
+    private int month;
+    private int num;
+    private int year;
     private int unit;
     private int answer;
     private String descriptionPath;
     private String solutionPath;
 
     @Builder
-
-    public QuestionResponse(Long id, double answerRate, int point, byte grade, byte month, byte num, short year, int unit, int answer, String descriptionPath, String solutionPath) {
+    public QuestionResponse(Long id, double answerRate, int point, int grade, int month, int num, int year, int unit, int answer, String descriptionPath, String solutionPath) {
         this.id = id;
         this.answerRate = answerRate;
         this.point = point;

@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class QuestionService {
     private final QuestionRepositoryImpl questionRepository;
-    public List<QuestionResponse> findByCondition(byte grade, byte month, int point, int page, int size, Sort sort) {
+    public List<QuestionResponse> findByCondition(int grade, int month, int point, int page, int size, Sort sort) {
         List<Question> questions = questionRepository.searchQuestion(grade, month, point, page, size, sort.getSort());
         return QuestionResponse.listOf(questions);
     }

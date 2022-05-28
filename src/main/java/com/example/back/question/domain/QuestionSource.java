@@ -1,5 +1,6 @@
 package com.example.back.question.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,12 +10,12 @@ import javax.persistence.Embeddable;
 @Getter
 @Embeddable
 public class QuestionSource {
-    private byte grade;
-    private short year;
-    private byte month;
-    private byte num;
-
-    public QuestionSource(byte grade, short year, byte month, byte num) {
+    private int grade;
+    private int year;
+    private int month;
+    private int num;
+    @Builder
+    public QuestionSource(int grade, int year, int month, int num) {
         this.grade = grade;
         this.year = year;
         this.month = month;

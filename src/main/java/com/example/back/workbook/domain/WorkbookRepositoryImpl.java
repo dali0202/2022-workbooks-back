@@ -24,17 +24,6 @@ public class WorkbookRepositoryImpl implements WorkbookRepositoryCustom {
 
     QWorkbook workbook = QWorkbook.workbook;
 
-//    @Override
-//    public List<Workbook> searchWorkbook(String keyword, int page, int size) {
-//        return queryFactory
-//                .selectFrom(workbook)
-//                .offset(page)
-//                .limit(size)
-//                .where(workbook.title.contains(keyword))
-//                .orderBy(workbook.createdDate.desc())
-//                .fetch();
-//    }
-
     public List<Workbook> searchWorkbook(String keyword, int lastWorkbookId, int size) {
         return queryFactory
                 .selectFrom(workbook)

@@ -37,11 +37,6 @@ public class WorkbookService {
         return WorkbookDetailResponse.of(workbook, questions);
     }
 
-//    public List<WorkbookResponse> findByCondition(String keyword, int page, int size) {
-//        List<Workbook> workbooks = workbookRepositoryImpl.searchWorkbook(keyword, page, size);
-//        return WorkbookResponse.listOf(workbooks);
-//    }
-
     public List<WorkbookResponse> findByCondition(String keyword, int lastWorkbookId, int size) {
         List<Workbook> workbooks = workbookRepositoryImpl.searchWorkbook(keyword, lastWorkbookId, size);
         return WorkbookResponse.listOf(workbooks);
