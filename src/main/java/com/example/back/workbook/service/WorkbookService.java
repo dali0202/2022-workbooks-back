@@ -30,10 +30,7 @@ public class WorkbookService {
 
     public WorkbookDetailResponse findWorkbook(Long id) {
         Workbook workbook = findWorkbookById(id);
-        List<WorkbookQuestion> workbookQuestions = workbookQuestionRepository.findByWorkbook(workbook);
-        // 문제집내 번호 순으로 정렬하는 logic 필요?
-        List<Question> questions = new ArrayList();
-        workbookQuestions.forEach(workbookQuestion -> questions.add(workbookQuestion.getQuestion()));
+        List<Question> questions = workbook.getQuestions();
         return WorkbookDetailResponse.of(workbook, questions);
     }
 
