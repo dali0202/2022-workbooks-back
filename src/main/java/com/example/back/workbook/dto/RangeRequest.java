@@ -4,6 +4,8 @@ import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,9 +14,12 @@ import java.util.Map;
 public class RangeRequest {
     @NotBlank
     private String title;
+    @Positive
     private int questionNum;
-    private int lowerBound;
-    private int upperBound;
+    @NotBlank
+    private double lowerBound;
+    @NotBlank
+    private double upperBound;
     @NotEmpty
     private List<@NotBlank Integer> selectedUnit;
     @NotEmpty
