@@ -23,10 +23,10 @@ public class QuestionRepositoryImpl implements QuestionRepositoryCustom {
     QQuestion question = QQuestion.question;
 
     @Override
-    public List<Question> searchQuestion(int grade, int month, int point, int page, int size, OrderSpecifier orderSpecifier) {
+    public List<Question> searchQuestion(int grade, int month, int point, int offset, int size, OrderSpecifier orderSpecifier) {
         return queryFactory
                 .selectFrom(question)
-                .offset(page * size)
+                .offset(offset)
                 .limit(size)
                 .orderBy(orderSpecifier)
                 .where(gradeEquals(grade),
@@ -53,7 +53,6 @@ public class QuestionRepositoryImpl implements QuestionRepositoryCustom {
     private BooleanExpression pointEquals(int point) {
         return (point != 0) ? question.point.eq(point) : null;
     }
-
     private BooleanBuilder rangeSearchPredicate(RangeRequest request) {
         return new BooleanBuilder()
                 .and(answerRateCondition(request.getLowerBound(), request.getUpperBound()))

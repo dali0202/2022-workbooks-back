@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -30,5 +31,22 @@ public class WorkbookQuestion {
 		this.workbook = workbook;
 		this.question = question;
 		this.num = num;
+	}
+
+	public static void associate(Workbook workbook, List<Question> questions) {
+		int num = 1;
+		for (Question question : questions) {
+			WorkbookQuestion workbookQuestion = WorkbookQuestion
+					.builder()
+					.workbook(workbook)
+					.question(question)
+					.num(num)
+					.build();
+			num ++;
+			workbookQuestion.changeWorkbook(workbook);
+		}
+	}
+	private void changeWorkbook(Workbook workbook) {
+		workbook.getWorkbookQuestions().add(this);
 	}
 }

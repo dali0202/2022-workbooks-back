@@ -49,26 +49,16 @@ public class WorkbookService {
     public void saveRange(User user, RangeRequest rangeRequest) {
         Workbook workbook = createDefaultWorkbook(rangeRequest.getTitle(), user, 1);
         List<Question> questions = questionRepositoryImpl.searchQuestionByRange(rangeRequest);
-        saveQuestionInWorkbook(workbook, questions);
-        saveWorkbookInStorage(user, workbook);
+        WorkbookQuestion.associate(workbook, questions);
+        workbookRepository.save(workbook);
     }
     public void saveCustom(User user, CustomRequest customRequest) {
         Workbook workbook = createDefaultWorkbook(customRequest.getTitle(), user, 2);
         List<Question> questions = questionRepository.findAllById(customRequest.getSelectedQuestionId());
-        saveQuestionInWorkbook(workbook, questions);
-        saveWorkbookInStorage(user, workbook);
+        WorkbookQuestion.associate(workbook, questions);
+        workbookRepository.save(workbook);
     }
 
-    // 만들어진 Workbook 엔티티를 불필요하게 dto로 변환하여 Storage의 서비스로 전달하기보다 여기서 처리.
-    // User에 양방향 걸고 편의메서드 만들어놓고 workbook 인자로 받으면 로직 처리가능할듯.
-    // ex. user.addWorkbook(workbook)
-    private void saveWorkbookInStorage(User user, Workbook workbook) {
-        storageRepository.save(Storage
-                .builder()
-                .user(user)
-                .workbook(workbook)
-                .build());
-    }
     private Workbook createDefaultWorkbook(String title, User user, int type) {
         Workbook workbook = Workbook
                 .builder()
@@ -76,19 +66,7 @@ public class WorkbookService {
                 .user(user)
                 .type(type)
                 .build();
-        workbookRepository.save(workbook);
         return workbook;
-    }
-    private void saveQuestionInWorkbook(Workbook workbook, List<Question> questions) {
-        for (int num = 0; num < questions.size(); num++) {
-            workbookQuestionRepository.save(
-                    WorkbookQuestion
-                            .builder()
-                            .question(questions.get(num))
-                            .workbook(workbook)
-                            .num(num + 1)
-                            .build());
-        }
     }
 
     private Workbook findWorkbookById(Long id) {
