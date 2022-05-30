@@ -25,24 +25,19 @@ public class WorkbookService {
     private final WorkbookRepositoryImpl workbookRepositoryImpl;
     private final QuestionRepository questionRepository;
     private final QuestionRepositoryImpl questionRepositoryImpl;
-    private final StorageRepository storageRepository;
-    private final WorkbookQuestionRepository workbookQuestionRepository;
 
     public WorkbookDetailResponse findWorkbook(Long id) {
         Workbook workbook = findWorkbookById(id);
         List<Question> questions = workbook.getQuestions();
         return WorkbookDetailResponse.of(workbook, questions);
     }
-
     public List<WorkbookResponse> findByCondition(String keyword, int lastWorkbookId, int size) {
         List<Workbook> workbooks = workbookRepositoryImpl.searchWorkbook(keyword, lastWorkbookId, size);
         return WorkbookResponse.listOf(workbooks);
     }
-
     public void saveMock(User user, MockRequest mockRequest) {
 //        개발중
     }
-
     public void saveRange(User user, RangeRequest rangeRequest) {
         List<Question> questions = questionRepositoryImpl.searchQuestionByRange(rangeRequest);
         createWorkbook(rangeRequest.getTitle(), user, 1, questions);
@@ -51,7 +46,6 @@ public class WorkbookService {
         List<Question> questions = questionRepository.findAllById(customRequest.getSelectedQuestionId());
         createWorkbook(customRequest.getTitle(), user, 2, questions);
     }
-
     private void createWorkbook(String title, User user, int type, List<Question> questions) {
         Workbook workbook = Workbook
                 .builder()
