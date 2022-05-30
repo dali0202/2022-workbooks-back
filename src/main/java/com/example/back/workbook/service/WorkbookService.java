@@ -43,32 +43,28 @@ public class WorkbookService {
     }
 
     public void saveMock(User user, MockRequest mockRequest) {
-        Workbook workbook = createDefaultWorkbook(mockRequest.getTitle(), user, 0);
+//        개발중
     }
 
     public void saveRange(User user, RangeRequest rangeRequest) {
-        Workbook workbook = createDefaultWorkbook(rangeRequest.getTitle(), user, 1);
         List<Question> questions = questionRepositoryImpl.searchQuestionByRange(rangeRequest);
-        WorkbookQuestion.associate(workbook, questions);
-        workbookRepository.save(workbook);
+        createWorkbook(rangeRequest.getTitle(), user, 1, questions);
     }
     public void saveCustom(User user, CustomRequest customRequest) {
-        Workbook workbook = createDefaultWorkbook(customRequest.getTitle(), user, 2);
         List<Question> questions = questionRepository.findAllById(customRequest.getSelectedQuestionId());
-        WorkbookQuestion.associate(workbook, questions);
-        workbookRepository.save(workbook);
+        createWorkbook(customRequest.getTitle(), user, 2, questions);
     }
 
-    private Workbook createDefaultWorkbook(String title, User user, int type) {
+    private void createWorkbook(String title, User user, int type, List<Question> questions) {
         Workbook workbook = Workbook
                 .builder()
                 .title(title)
                 .user(user)
                 .type(type)
                 .build();
-        return workbook;
+        WorkbookQuestion.associate(workbook, questions);
+        workbookRepository.save(workbook);
     }
-
     private Workbook findWorkbookById(Long id) {
         return workbookRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.WORKBOOK_NOT_FOUND));
