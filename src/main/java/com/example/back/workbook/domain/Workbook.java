@@ -30,7 +30,6 @@ public class Workbook extends BaseTimeEntity {
     private List<WorkbookQuestion> workbookQuestions = new ArrayList<>();
 
     private int type;
-
     private String title;
 
     @Builder

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
 import java.net.URI;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class WorkbookController {
     private final JwtUtils jwtUtils;
 
     @GetMapping
-    public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "0") int lastWorkbookId, @RequestParam int size) {
+    public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "0") int lastWorkbookId, @RequestParam @Max(100) int size) {
         return ResponseEntity.ok(workbookService.findByCondition(keyword, lastWorkbookId, size));
     }
     @GetMapping("/{id}")

@@ -16,16 +16,14 @@ public class WorkbookQuestion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "workbook_id")
 	private Workbook workbook;
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "question_id")
 	private Question question;
-
 	private int num;
+
 	@Builder
 	public WorkbookQuestion(Workbook workbook, Question question, int num) {
 		this.workbook = workbook;

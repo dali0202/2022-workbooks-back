@@ -17,9 +17,9 @@ public class WorkbookResponse {
 	private Long id;
 	private String title;
 	private String userName;
-
 	private int type;
 	private LocalDateTime createdDate;
+
 	@Builder
 	public WorkbookResponse(Long id, String title, String userName, int type, LocalDateTime createdDate) {
 		this.id = id;

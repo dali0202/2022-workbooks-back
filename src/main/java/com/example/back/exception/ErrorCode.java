@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum ErrorCode {
+	//Common
 	INVALID_INPUT_VALUE(400, "C_001", "적절하지 않은 요청 값입니다."),
 	BOARD_NOT_FOUND(400, "BO_001", "게시글을 찾을 수 없습니다."),
 	BOARD_UNAUTHORIZED(403, "BO_002", "게시글 수정 권한이 없습니다"),
@@ -12,9 +13,10 @@ public enum ErrorCode {
 	STORAGE_UNAUTHORIZED(403, "ST_002", "보관함 수정 권한이 없습니다"),
 
 	USER_NOT_FOUND(400, "US_001", "유저를 찾을 수 없습니다."),
-
+	//WORKBOOK
 	WORKBOOK_NOT_FOUND(400, "WO_001", "문제집을 찾을 수 없습니다."),
 
+	//AUTH
 	AUTH_ERROR(400, "AU_001", "인증 관련 오류가 발생했습니다."),
 	UNAUTHORIZED_REDIRECT_URI(403, "AU_002", "인증되지 않은 REDIRECT_URI 입니다.");
 

@@ -10,15 +10,17 @@ import java.util.Map;
 @Getter
 public class RangeRequest {
     @NotBlank
+    @Size(min = 1, max = 20)
     private String title;
     @Positive
+    @Max(100)
     private int questionNum;
     @NotNull
     private double lowerBound;
     @NotNull
     private double upperBound;
     @NotEmpty
-    private List<@Positive Integer> selectedUnit;
+    private List<@PositiveOrZero Integer> selectedUnit;
     @NotEmpty
-    private List<@Positive Integer> selectedPoint;
+    private List<@PositiveOrZero Integer> selectedPoint;
 }
