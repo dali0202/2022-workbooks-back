@@ -3,13 +3,14 @@ package com.example.back.workbook.dto;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 @Getter
 public class MockRequest {
     @NotBlank
     private String title;
-    @NotBlank
+    @Positive
     private int grade;
-    @NotBlank
+    @Positive
     private int month;
 }

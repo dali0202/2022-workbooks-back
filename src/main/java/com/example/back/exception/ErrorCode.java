@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum ErrorCode {
-
+	INVALID_INPUT_VALUE(400, "C_001", "적절하지 않은 요청 값입니다."),
 	BOARD_NOT_FOUND(400, "BO_001", "게시글을 찾을 수 없습니다."),
 	BOARD_UNAUTHORIZED(403, "BO_002", "게시글 수정 권한이 없습니다"),
 

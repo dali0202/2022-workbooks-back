@@ -2,10 +2,7 @@ package com.example.back.workbook.dto;
 
 import lombok.Getter;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,12 +13,12 @@ public class RangeRequest {
     private String title;
     @Positive
     private int questionNum;
-    @NotBlank
+    @NotNull
     private double lowerBound;
-    @NotBlank
+    @NotNull
     private double upperBound;
     @NotEmpty
-    private List<@NotBlank Integer> selectedUnit;
+    private List<@Positive Integer> selectedUnit;
     @NotEmpty
-    private List<@NotBlank Integer> selectedPoint;
+    private List<@Positive Integer> selectedPoint;
 }
