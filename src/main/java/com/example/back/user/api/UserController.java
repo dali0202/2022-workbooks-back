@@ -14,25 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 @RequestMapping("/api/users")
 public class UserController {
-
 	private final JwtUtils jwtUtils;
 
 	@GetMapping("/me")
-	public ResponseEntity<?> register(HttpServletRequest request) {
+	public ResponseEntity<?> getCurrentUser(HttpServletRequest request) {
 		User user = jwtUtils.getUserByToken(request);
-		//Optinal 공부 후 도입?
 		return ResponseEntity.ok(UserResponse.of(user));
 	}
-
-//	@PostMapping("/register")
-//	public ResponseEntity<?> register(@RequestBody UserRegistRequest userRequest) {
-//	}
-//
-//	@PatchMapping("/modify")
-//	public ResponseEntity<?> modify(/* User user */, @RequestBody UserModifyRequest userRequest) {
-//	}
-//
-//	@PostMapping("/login")
-//	public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-//	}
 }
