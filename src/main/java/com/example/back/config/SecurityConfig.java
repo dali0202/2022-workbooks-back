@@ -8,6 +8,7 @@ import com.example.back.auth.oauth2.handler.OAuth2AuthenticationSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -18,7 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+	private static final String USER = "USER";
 	private final CustomOAuth2UserService customOAuth2UserService;
 	private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
 	private final OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
@@ -50,7 +51,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			//.and()
 			.authorizeRequests()
 			.antMatchers("/auth/**", "/oauth2/**").permitAll() // Security 허용 Url
-			.anyRequest().permitAll() // 그 외엔 모두 인증 필요
+//				.antMatchers(HttpMethod.GET, "/api/questions/**")
+//				.hasRole(USER)
+
+			.anyRequest().permitAll()
 			.and()
 			.oauth2Login()
 			.authorizationEndpoint().baseUri("/oauth2/authorization") // 소셜 로그인 Url
