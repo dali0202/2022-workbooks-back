@@ -2,12 +2,13 @@ package com.example.back.auth;
 
 import com.example.back.user.domain.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.Collection;
 import java.util.Map;
 
-public class UserPrincipal implements OAuth2User {
+public class UserPrincipal implements OAuth2User, UserDetails {
 
 	private User user;
 	private Map<String, Object> attributes;
@@ -47,4 +48,29 @@ public class UserPrincipal implements OAuth2User {
 	}
 
 	public void setAttributes(Map<String, Object> attributes) { this.attributes = attributes; }
+
+	@Override
+	public String getPassword() {
+		return null;
+	}
+	@Override
+	public String getUsername() {
+		return user.getName();
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		return false;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		return false;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return false;
+	}
+	@Override
+	public boolean isEnabled() {
+		return false;
+	}
 }

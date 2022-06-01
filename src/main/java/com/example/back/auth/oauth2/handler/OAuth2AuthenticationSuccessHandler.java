@@ -3,6 +3,8 @@ package com.example.back.auth.oauth2.handler;
 
 import com.example.back.auth.oauth2.domain.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.example.back.config.AppProperties;
+import com.example.back.exception.AuthException;
+import com.example.back.exception.ErrorCode;
 import com.example.back.util.CookieUtils;
 import com.example.back.util.JwtUtils;
 import lombok.RequiredArgsConstructor;
@@ -24,11 +26,8 @@ import static com.example.back.auth.oauth2.domain.HttpCookieOAuth2AuthorizationR
 @Component
 @RequiredArgsConstructor
 public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
-
 	private final JwtUtils jwtUtils;
-
 	private final AppProperties appProperties;
-
 	private final HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
 
 	@Override
@@ -36,7 +35,6 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 		IOException {
 		String targetUrl = determineTargetUrl(request, response, authentication);
 		if (response.isCommitted()) {
-			logger.debug("응답이 이미 전송되었습니다." + targetUrl + "로 리다이렉트가 불가능합니다.");
 			return;
 		}
 		clearAuthenticationAttributes(request, response);
@@ -45,8 +43,8 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 	protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
 		Optional<String> redirectUri = CookieUtils.getCookie(request, REDIRECT_URI_PARAM_COOKIE_NAME).map(Cookie::getValue);
 
-//		if (redirectUri.isPresent() && !isAuthorizedRedirectUri(redirectUri.get()))
-//			throw new AuthException(ErrorCode.UNAUTHORIZED_REDIRECT_URI);
+		if (redirectUri.isPresent() && !isAuthorizedRedirectUri(redirectUri.get()))
+			throw new AuthException(ErrorCode.UNAUTHORIZED_REDIRECT_URI);
 
 		String targetUri = redirectUri.orElse(getDefaultTargetUrl());
 

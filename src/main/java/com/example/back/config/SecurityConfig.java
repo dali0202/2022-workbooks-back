@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -22,10 +23,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
 	private final OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
 
-//	@Bean
-//	public TokenAuthenticationFilter tokenAuthenticationFilter() {
-//		return new TokenAuthenticationFilter();
-//	}
+	@Bean
+	public TokenAuthenticationFilter tokenAuthenticationFilter() {
+		return new TokenAuthenticationFilter();
+	}
 
 	@Bean
 	public HttpCookieOAuth2AuthorizationRequestRepository cookieOAuth2AuthorizationRequestRepository() {
@@ -62,6 +63,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.successHandler(oAuth2AuthenticationSuccessHandler) // 인증 성공 시 Handler
 			.failureHandler(oAuth2AuthenticationFailureHandler); // 인증 실패 시 Handler
 
-		// http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		 http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 }

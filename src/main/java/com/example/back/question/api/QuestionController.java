@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Max;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @GetMapping
-    public ResponseEntity<List<QuestionResponse>> findQuestions(
+    public ResponseEntity<List<QuestionResponse>> findQuestionsByCondition(
             @RequestParam(defaultValue = "0") int grade, @RequestParam(defaultValue = "0") int month, @RequestParam(defaultValue = "0") int point, @RequestParam(defaultValue = "0") int offset, @RequestParam int size, @RequestParam Sort sort) {
         return ResponseEntity.ok(questionService.findByCondition(grade, month, point, offset, size, sort));
     }

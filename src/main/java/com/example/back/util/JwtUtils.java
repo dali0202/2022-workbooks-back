@@ -71,10 +71,4 @@ public class JwtUtils {
 			.parseClaimsJws(token)
 			.getBody();
 	}
-
-	public User getUserByToken(HttpServletRequest request) {
-		String token = resolveToken(request);
-		Claims claims = getClaims(token);
-		return userRepository.findByEmail(claims.getSubject()).get();
-	}
 }
