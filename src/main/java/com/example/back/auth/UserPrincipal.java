@@ -2,10 +2,13 @@ package com.example.back.auth;
 
 import com.example.back.user.domain.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 
 public class UserPrincipal implements OAuth2User, UserDetails {
@@ -35,7 +38,7 @@ public class UserPrincipal implements OAuth2User, UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+		return Collections.singletonList(new SimpleGrantedAuthority(user.getRole().name()));
 	}
 
 	@Override
