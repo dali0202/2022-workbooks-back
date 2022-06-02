@@ -5,6 +5,8 @@ import com.example.back.auth.oauth2.domain.AuthProvider;
 import com.example.back.auth.oauth2.domain.info.OAuth2UserInfo;
 import com.example.back.auth.oauth2.domain.info.OAuth2UserInfoFactory;
 import com.example.back.auth.oauth2.exception.OAuth2AuthenticationProcessingException;
+import com.example.back.exception.AuthException;
+import com.example.back.exception.ErrorCode;
 import com.example.back.user.domain.Role;
 import com.example.back.user.domain.User;
 import com.example.back.user.domain.UserRepository;
@@ -46,7 +48,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 		);
 
 		if (StringUtils.isBlank(oAuth2UserInfo.getEmail()))
-			throw new OAuth2AuthenticationProcessingException("empty email");
+			throw new AuthException(ErrorCode.AUTH_ERROR);
 		Optional<User> userOptional = userRepository.findByEmail(oAuth2UserInfo.getEmail());
 		User user;
 		if (userOptional.isPresent()) {
