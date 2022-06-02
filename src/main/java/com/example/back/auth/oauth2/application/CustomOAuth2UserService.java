@@ -34,10 +34,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
 		try {
 			return processOAuth2User(oAuth2UserRequest, oAuth2User);
-		} catch (AuthenticationException e) {
-			throw e;
 		} catch (Exception e) {
-			throw new InternalAuthenticationServiceException(e.getMessage(), e.getCause());
+			throw new AuthException(ErrorCode.AUTH_ERROR);
 		}
 	}
 
@@ -48,13 +46,13 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 		);
 
 		if (StringUtils.isBlank(oAuth2UserInfo.getEmail()))
-			throw new AuthException(ErrorCode.AUTH_ERROR);
+			throw new AuthException(ErrorCode.OAUTH2_EMAIL_NOT_EXIST);
 		Optional<User> userOptional = userRepository.findByEmail(oAuth2UserInfo.getEmail());
 		User user;
 		if (userOptional.isPresent()) {
 			if (!userOptional.get().getAuthProvider().equals(
 				AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId())))
-				throw new OAuth2AuthenticationProcessingException("already sign up other provider");
+				throw new AuthException(ErrorCode.OAUTH2_DUPLICATE_EMAIL);
 			user = updateUser(userOptional.get(), oAuth2UserInfo);
 		} else {
 			user = registerUser(oAuth2UserRequest, oAuth2UserInfo);
