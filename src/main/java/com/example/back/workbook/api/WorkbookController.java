@@ -6,6 +6,7 @@ import com.example.back.workbook.dto.*;
 import com.example.back.workbook.service.WorkbookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -24,6 +25,7 @@ public class WorkbookController {
     public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "0") int lastWorkbookId, @RequestParam @Max(100) int size) {
         return ResponseEntity.ok(workbookService.findByCondition(keyword, lastWorkbookId, size));
     }
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{id}")
     public ResponseEntity<WorkbookDetailResponse> findWorkbook(@PathVariable Long id) {
         return ResponseEntity.ok(workbookService.findWorkbook(id));

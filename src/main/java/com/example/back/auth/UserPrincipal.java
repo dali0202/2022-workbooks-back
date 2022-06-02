@@ -39,6 +39,7 @@ public class UserPrincipal implements OAuth2User, UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return Collections.singletonList(new SimpleGrantedAuthority(user.getRole().name()));
+		// singletonList -> 불변성 보장
 	}
 
 	@Override
