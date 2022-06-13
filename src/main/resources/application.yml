@@ -62,6 +62,7 @@ app:
   auth:
     token-secret: navysworkbooksjwtkeysecretnavysworkbooksjwtkeysecretnavysworkbooksjwtkeysecret
     token-expiration-time: 1209600000
+
   oauth2:
     authorized-redirect-uris:
       - http://localhost:3000
