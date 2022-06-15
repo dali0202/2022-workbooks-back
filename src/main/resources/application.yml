@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/workbooks
+    url: jdbc:mariadb://workbooks.cxj3hj7vxykm.ap-northeast-2.rds.amazonaws.com:3306/workbooks
     driver-class-name: org.mariadb.jdbc.Driver
-    username: root
-    password: workbooks
+    username: dali
+    password: workbooks0831
 
   jpa:
     hibernate:
