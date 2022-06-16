@@ -17,7 +17,6 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @GetMapping
-    @CrossOrigin
     public ResponseEntity<List<QuestionResponse>> findQuestionsByCondition(
             @RequestParam(defaultValue = "0") int grade, @RequestParam(defaultValue = "0") int month, @RequestParam(defaultValue = "0") int point, @RequestParam(defaultValue = "0") int offset, @RequestParam int size, @RequestParam Sort sort) {
         return ResponseEntity.ok(questionService.findByCondition(grade, month, point, offset, size, sort));
