@@ -46,8 +46,7 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 		if (redirectUri.isPresent() && !isAuthorizedRedirectUri(redirectUri.get()))
 			throw new AuthException(ErrorCode.UNAUTHORIZED_REDIRECT_URI);
 
-//		String targetUri = redirectUri.orElse(getDefaultTargetUrl());
-		String targetUri = "https://workbooks.ga";
+		String targetUri = redirectUri.orElse(getDefaultTargetUrl());
 		String token = jwtUtils.createToken(authentication);
 
 		return UriComponentsBuilder.fromUriString(targetUri)
