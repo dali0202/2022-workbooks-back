@@ -15,6 +15,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
 @EnableWebSecurity
@@ -38,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.cors()
+			.cors().configurationSource(corsConfigurationSource())
 			.and()
 			.sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 세션을 사용하지 않음
@@ -69,5 +73,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.failureHandler(oAuth2AuthenticationFailureHandler); // 인증 실패 시 Handler
 
 		 http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+	}
+	@Bean
+	public CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+
+		configuration.addAllowedOrigin("*");
+		configuration.addAllowedHeader("*");
+		configuration.addAllowedMethod("*");
+		configuration.setAllowCredentials(true);
+
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
 	}
 }
