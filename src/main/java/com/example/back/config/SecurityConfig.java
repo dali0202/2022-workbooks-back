@@ -17,6 +17,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -55,7 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			//.exceptionHandling().authenticationEntryPoint(new RestAuthenticationEntryPoint()) // 인증,인가가 되지 않은 요청 시 발생
 			//.and()
 			.authorizeRequests()
-			.antMatchers("/auth/**", "/oauth2/**").permitAll() // Security 허용 Url
+				.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+				.antMatchers("/auth/**", "/oauth2/**").permitAll() // Security 허용 Url
 				.antMatchers(HttpMethod.POST, "/api/workbooks/**")
 				.hasRole(USER)
 
