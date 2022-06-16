@@ -66,5 +66,4 @@ app:
   oauth2:
     authorized-redirect-uris:
       - http://localhost:3000
-      - https://d24ewnhwm4y274.cloudfront.net
-      - https://d24ewnhwm4y274.cloudfront.net/index.html
+      - https://workbooks.ga
