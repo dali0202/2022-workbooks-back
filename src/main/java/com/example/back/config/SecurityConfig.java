@@ -56,7 +56,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				//.exceptionHandling().authenticationEntryPoint(new RestAuthenticationEntryPoint()) // 인증,인가가 되지 않은 요청 시 발생
 				//.and()
 				.authorizeRequests()
-				.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
 				.antMatchers("/auth/**", "/oauth2/**").permitAll() // Security 허용 Url
 				.antMatchers(HttpMethod.POST, "/api/workbooks/**")
 				.hasRole(USER)
