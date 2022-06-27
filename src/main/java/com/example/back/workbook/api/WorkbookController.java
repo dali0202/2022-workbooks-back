@@ -25,7 +25,6 @@ public class WorkbookController {
     public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "0") int lastWorkbookId, @RequestParam @Max(100) int size) {
         return ResponseEntity.ok(workbookService.findByCondition(keyword, lastWorkbookId, size));
     }
-    @PreAuthorize("hasRole('USER')")
     @GetMapping("/{id}")
     public ResponseEntity<WorkbookDetailResponse> findWorkbook(@PathVariable Long id) {
         return ResponseEntity.ok(workbookService.findWorkbook(id));

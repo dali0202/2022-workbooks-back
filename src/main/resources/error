@@ -1,2 +1,0 @@
-ERROR 2002 (HY000): Can't connect to local server through socket
-Could not connect to address=(host=localhost)(port=3306)(type=master)

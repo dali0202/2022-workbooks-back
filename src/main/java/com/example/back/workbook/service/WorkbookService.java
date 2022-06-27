@@ -5,9 +5,6 @@ import com.example.back.exception.ErrorCode;
 import com.example.back.question.domain.Question;
 import com.example.back.question.domain.QuestionRepository;
 import com.example.back.question.domain.QuestionRepositoryImpl;
-import com.example.back.question.dto.QuestionResponse;
-import com.example.back.storage.domain.Storage;
-import com.example.back.storage.domain.StorageRepository;
 import com.example.back.user.domain.User;
 import com.example.back.workbook.domain.*;
 import com.example.back.workbook.dto.*;
@@ -15,7 +12,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor(access = AccessLevel.PUBLIC)

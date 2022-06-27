@@ -59,7 +59,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/auth/**", "/oauth2/**").permitAll() // Security 허용 Url
 				.antMatchers(HttpMethod.POST, "/api/workbooks/**")
 				.hasRole(USER)
-
 				.anyRequest().permitAll()
 				.and()
 				.oauth2Login()
