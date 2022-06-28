@@ -21,6 +21,7 @@
 
 ## 아키텍쳐
 ![Architecture](https://user-images.githubusercontent.com/93257581/176100634-124251d4-681e-43c2-b2cb-9656a9694e1e.svg)
+![Architecture](https://user-images.githubusercontent.com/93257581/176100841-a364802a-68b3-4683-99e6-fb2622037438.png)
 
 * 서비스 링크 : <https://workbooks.ga>
 * 프론트엔드 리포지토리 : <https://github.com/dali0202/2022-workbooks-front>
