@@ -28,14 +28,7 @@
 
 
 ## 기술스택
-### Frontend
-![front](https://user-images.githubusercontent.com/93257581/176088703-5d493cb6-6301-4dd8-8e07-819c6f7442fc.png)
-
-### Backend
-![back](https://user-images.githubusercontent.com/93257581/176088723-b1efccbd-9626-4c99-976e-260900bce124.png)
-
-### Infra
-![infra](https://user-images.githubusercontent.com/93257581/176088737-642deb73-9b84-4b40-ac53-1285957fa9b0.png)
+![Stacks](https://user-images.githubusercontent.com/93257581/176146068-851d924b-8008-431c-b8cc-5a2d2e880040.svg)
 
 <br/>
 
