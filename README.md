@@ -20,6 +20,7 @@
 ![infra](https://user-images.githubusercontent.com/93257581/176088737-642deb73-9b84-4b40-ac53-1285957fa9b0.png)
 
 ## 아키텍쳐
+![Architecture](https://user-images.githubusercontent.com/93257581/176100634-124251d4-681e-43c2-b2cb-9656a9694e1e.svg)
 
 * 서비스 링크 : <https://workbooks.ga>
 * 프론트엔드 리포지토리 : <https://github.com/dali0202/2022-workbooks-front>
