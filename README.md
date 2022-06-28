@@ -1,5 +1,5 @@
 <h1 align="middle">Workbooks</h1>
-<p align="middle">안녕하세요. 워크북스입니다. https://workbooks.ga</p>
+<p align="middle">안녕하세요. 워크북스입니다.</p>
 
 ## 프로젝트 소개
 
@@ -22,5 +22,5 @@
 
 ## 아키텍쳐
 
-
+서비스 링크 : https://workbooks.ga
 프론트엔드 리포지토리 : https://github.com/dali0202/2022-workbooks-front
