@@ -1,4 +1,4 @@
-<div align="center">## 워크북스</div>
+## 워크북스
 > 워크북스는 수학 문제집 생성 서비스입니다. 학생들을 학습을 지원하기위해 시작되었습니다!
 
 ![overview](https://user-images.githubusercontent.com/93257581/176131401-1e3852e6-ca4d-47a2-8d3d-a91c0060b94b.gif)
