@@ -26,7 +26,7 @@
 
 <details>
 <summary>범위 선택으로 만들기</summary>
-  <img src="https://user-images.githubusercontent.com/93257581/176117025-e6df4d41-230d-4a7b-8290-f90db6908e81.gif"/>
+  <img src="https://user-images.githubusercontent.com/93257581/176122612-aecc764f-d3c1-4f13-9b8d-6054c9daf3bc.gif"/>
 </details>
 
 <details>
