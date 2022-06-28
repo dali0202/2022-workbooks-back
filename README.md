@@ -1,7 +1,7 @@
-# 서비스 소개
+## 서비스 소개
 워크북스는 수학 문제집 생성 서비스입니다. 학생들의 학습을 응원합니다:grin:
 <br/>
-# 서비스 미리보기
+## 서비스 미리보기
 ![overview](https://user-images.githubusercontent.com/93257581/176131401-1e3852e6-ca4d-47a2-8d3d-a91c0060b94b.gif)
 
 <details>
@@ -27,24 +27,28 @@
 <br/>
 
 
-# 기술스택
-## Frontend
+## 기술스택
+### Frontend
 ![front](https://user-images.githubusercontent.com/93257581/176088703-5d493cb6-6301-4dd8-8e07-819c6f7442fc.png)
 
-## Backend
+### Backend
 ![back](https://user-images.githubusercontent.com/93257581/176088723-b1efccbd-9626-4c99-976e-260900bce124.png)
 
-## Infra
+### Infra
 ![infra](https://user-images.githubusercontent.com/93257581/176088737-642deb73-9b84-4b40-ac53-1285957fa9b0.png)
 
 <br/>
 
-# 아키텍쳐
+## 아키텍쳐
 ![Architecture](https://user-images.githubusercontent.com/93257581/176100634-124251d4-681e-43c2-b2cb-9656a9694e1e.svg)
 
 <br/>
+## 업데이트 내역
+* 6.17 ver0 워크북스 데모버전 배포
 
-# 연관사이트
+<br/>
+
+## 연관사이트
 * 서비스 링크 : <https://workbooks.ga>
 * 프론트엔드 리포지토리 : <https://github.com/dali0202/2022-workbooks-front>
 
