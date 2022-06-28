@@ -9,7 +9,7 @@
 
 <br/>
 
-# 서비스 기능
+# 서비스 미리보기
 ## 간단 요약
 ![custompage](https://user-images.githubusercontent.com/93257581/176117025-e6df4d41-230d-4a7b-8290-f90db6908e81.gif)
 
@@ -19,8 +19,9 @@
 </details>
 
 <details>
+
 <summary>문제집 검색 및 조회</summary>
-  <img src="https://user-images.githubusercontent.com/93257581/176117025-e6df4d41-230d-4a7b-8290-f90db6908e81.gif"/>
+  <img src="https://user-images.githubusercontent.com/93257581/176121689-6c219a63-ac0a-4131-a472-ae017391e4d2.gif"/>
 </details>
 
 <details>
