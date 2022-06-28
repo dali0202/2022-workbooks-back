@@ -22,5 +22,5 @@
 
 ## 아키텍쳐
 
-서비스 링크 : https://workbooks.ga
-프론트엔드 리포지토리 : https://github.com/dali0202/2022-workbooks-front
+* 서비스 링크 : <https://workbooks.ga>
+* 프론트엔드 리포지토리 : <https://github.com/dali0202/2022-workbooks-front>
