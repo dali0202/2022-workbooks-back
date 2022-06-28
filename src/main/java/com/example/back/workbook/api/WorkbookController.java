@@ -6,7 +6,6 @@ import com.example.back.workbook.dto.*;
 import com.example.back.workbook.service.WorkbookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

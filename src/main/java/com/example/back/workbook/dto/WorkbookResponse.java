@@ -1,6 +1,5 @@
 package com.example.back.workbook.dto;
 
-import com.example.back.board.domain.Board;
 import com.example.back.workbook.domain.Workbook;
 import lombok.AccessLevel;
 import lombok.Builder;
