@@ -1,5 +1,5 @@
 ## 서비스 소개
-워크북스는 수학 문제집 생성 서비스입니다. 학생들의 학습을 응원합니다:grin:
+워크북스는 수학 문제집 생성 서비스입니다. 학생들의 학습을 응원합니다.:pray:
 <br/>
 ## 서비스 미리보기
 ![overview](https://user-images.githubusercontent.com/93257581/176131401-1e3852e6-ca4d-47a2-8d3d-a91c0060b94b.gif)
