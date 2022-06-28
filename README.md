@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/93257581/176152557-c1fd7122-8979-433b-b1d5-aa97c65804e0.png" alt="workbooks-logo"  width="220" height="220">
+    <img src="https://user-images.githubusercontent.com/93257581/176152557-c1fd7122-8979-433b-b1d5-aa97c65804e0.png" alt="workbooks-logo" height="280">
 </p>
 
 ## 서비스 소개
