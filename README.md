@@ -32,17 +32,17 @@
 <br/>
 
 
-# 기술스택
-#### Front
+# 3. :department_store: 프로젝트 기술스택
+## Front
 ![front](https://user-images.githubusercontent.com/93257581/176088703-5d493cb6-6301-4dd8-8e07-819c6f7442fc.png)
 
-#### Back
+## Back
 ![back](https://user-images.githubusercontent.com/93257581/176088723-b1efccbd-9626-4c99-976e-260900bce124.png)
 
-#### Infra
+## Infra
 ![infra](https://user-images.githubusercontent.com/93257581/176088737-642deb73-9b84-4b40-ac53-1285957fa9b0.png)
 
-# 아키텍쳐
+# 4. :department_store: 프로젝트 구조
 ![Architecture](https://user-images.githubusercontent.com/93257581/176100634-124251d4-681e-43c2-b2cb-9656a9694e1e.svg)
 
 * 서비스 링크 : <https://workbooks.ga>
