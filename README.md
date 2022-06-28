@@ -14,7 +14,7 @@
 
 <details>
 <summary>소셜 로그인</summary>
-  <img src="https://user-images.githubusercontent.com/93257581/176117025-e6df4d41-230d-4a7b-8290-f90db6908e81.gif"/>
+  <img src="https://user-images.githubusercontent.com/93257581/176123534-db420f2a-6c2a-4967-aa60-ee20f5ff315d.gif"/>
 </details>
 
 <details>
