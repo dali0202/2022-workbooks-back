@@ -43,6 +43,7 @@
 ![Architecture](https://user-images.githubusercontent.com/93257581/176100634-124251d4-681e-43c2-b2cb-9656a9694e1e.svg)
 
 <br/>
+
 ## 업데이트 내역
 * 6.17 ver0 워크북스 데모버전 배포
 
