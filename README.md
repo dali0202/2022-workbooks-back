@@ -14,7 +14,6 @@
 </details>
 
 <details>
-
 <summary>문제집 검색 및 조회</summary>
   <img src="https://user-images.githubusercontent.com/93257581/176121689-6c219a63-ac0a-4131-a472-ae017391e4d2.gif"/>
 </details>
