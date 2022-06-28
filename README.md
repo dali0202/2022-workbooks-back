@@ -11,13 +11,13 @@
 
 ## 기술스택
 #### Front
-![front](https://user-images.githubusercontent.com/93257581/176087504-2bb3f8f9-1f14-4f75-ab68-227ef762f68e.png)
+![front](https://user-images.githubusercontent.com/93257581/176088703-5d493cb6-6301-4dd8-8e07-819c6f7442fc.png)
 
 #### Back
-![back](https://user-images.githubusercontent.com/93257581/176087524-19a8502e-644b-4f74-b145-247bca15f2d7.png)
+![back](https://user-images.githubusercontent.com/93257581/176088723-b1efccbd-9626-4c99-976e-260900bce124.png)
 
 #### Infra
-![infra](https://user-images.githubusercontent.com/93257581/176087540-f00bcd62-f1c4-49f6-a6d5-623161ba2553.png)
+![infra](https://user-images.githubusercontent.com/93257581/176088737-642deb73-9b84-4b40-ac53-1285957fa9b0.png)
 
 ## 아키텍쳐
 
