@@ -10,7 +10,7 @@
 <br/>
 
 # 서비스 미리보기
-![preview](https://user-images.githubusercontent.com/93257581/176125440-841c1b04-f1b0-457c-b4af-7837cf8a3bdc.gif)
+![overview](https://user-images.githubusercontent.com/93257581/176126032-7c1b7a8a-e92f-4fd0-9f11-8131c585b092.gif)
 
 <details>
 <summary>소셜 로그인</summary>
@@ -34,7 +34,6 @@
 </details>
 
 <br/>
-
 
 
 # 기술스택
