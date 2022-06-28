@@ -10,7 +10,7 @@
 <br/>
 
 # 서비스 미리보기
-![mainpage](https://user-images.githubusercontent.com/93257581/176125072-ceacbf63-b25b-49ba-b613-fc97f6b7fef1.gif)
+![preview](https://user-images.githubusercontent.com/93257581/176125440-841c1b04-f1b0-457c-b4af-7837cf8a3bdc.gif)
 
 <details>
 <summary>소셜 로그인</summary>
