@@ -1,6 +1,7 @@
 ## 워크북스
-![overview](https://user-images.githubusercontent.com/93257581/176126032-7c1b7a8a-e92f-4fd0-9f11-8131c585b092.gif)
 > 워크북스는 수학 문제집 생성 서비스입니다. 학생들을 학습을 지원하기위해 시작되었습니다!
+<br/>
+![overview](https://user-images.githubusercontent.com/93257581/176126032-7c1b7a8a-e92f-4fd0-9f11-8131c585b092.gif)
 <details>
 <summary>소셜 로그인</summary>
   <img src="https://user-images.githubusercontent.com/93257581/176123534-db420f2a-6c2a-4967-aa60-ee20f5ff315d.gif"/>
