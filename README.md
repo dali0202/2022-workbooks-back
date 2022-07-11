@@ -1,26 +1,63 @@
-<h1 align="middle">Workbooks</h1>
-<p align="middle">안녕하세요. 워크북스입니다.</p>
+<br/>
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/93257581/176152557-c1fd7122-8979-433b-b1d5-aa97c65804e0.png" alt="workbooks-logo" height="260">
+</p>
 
-## 프로젝트 소개
+## 서비스 소개
+워크북스는 수학 문제집 생성 서비스입니다. 학생들의 학습을 응원합니다.:pray:
+<br/>
+## 서비스 미리보기
+![overview](https://user-images.githubusercontent.com/93257581/176131401-1e3852e6-ca4d-47a2-8d3d-a91c0060b94b.gif)
 
-워크북스는 모의고사와 수능 기출문제를 기반으로 추천 문제집을 제공하는 서비스입니다.
+<details>
+<summary>소셜 로그인</summary>
+  <img src="https://user-images.githubusercontent.com/93257581/176123534-db420f2a-6c2a-4967-aa60-ee20f5ff315d.gif"/>
+</details>
 
-간편한 선택으로 나에게 필요한 기출 문제를 추천받고 문제집을 친구들과 공유해보세요!
+<details>
+<summary>문제집 검색 및 조회</summary>
+  <img src="https://user-images.githubusercontent.com/93257581/176121689-6c219a63-ac0a-4131-a472-ae017391e4d2.gif"/>
+</details>
 
+<details>
+<summary>범위 선택으로 만들기</summary>
+  <img src="https://user-images.githubusercontent.com/93257581/176122612-aecc764f-d3c1-4f13-9b8d-6054c9daf3bc.gif"/>
+</details>
+
+<details>
+<summary>문제 선택으로 만들기</summary>
+  <img src="https://user-images.githubusercontent.com/93257581/176117025-e6df4d41-230d-4a7b-8290-f90db6908e81.gif"/>
+</details>
+
+<br/>
 
 
 ## 기술스택
-#### Front
-![front](https://user-images.githubusercontent.com/93257581/174057063-ec25af3f-5111-4fc1-9d48-1613b87c7711.png)
+![Stacks](https://user-images.githubusercontent.com/93257581/176146068-851d924b-8008-431c-b8cc-5a2d2e880040.svg)
 
-#### Back
-![back](https://user-images.githubusercontent.com/93257581/174054352-3035df72-b750-4641-b444-107343c2ac27.png)
-
-#### Infra
-![infra](https://user-images.githubusercontent.com/93257581/174056598-96c5883a-cefd-4107-a3eb-53f8edb8febd.png)
-
+<br/>
 
 ## 아키텍쳐
+![Architecture](https://user-images.githubusercontent.com/93257581/176100634-124251d4-681e-43c2-b2cb-9656a9694e1e.svg)
 
+<br/>
+
+## 업데이트 내역
+* 0.0.1
+  * API 서버 완성(모의고사 제외)
+  * OAuth2 인증 완성
+* 0.0.2
+  * 문제집 게시판 페이지 완성
+  * 모의고사 페이지 완성
+  * 범위선택 페이지 완성
+  * 문제선택 페이지 완성
+* 0.0.3
+  * 커서기반 무한스크롤 구현
+
+<br/>
+
+## 연관사이트
 * 서비스 링크 : <https://workbooks.ga>
 * 프론트엔드 리포지토리 : <https://github.com/dali0202/2022-workbooks-front>
+
+<br/>
