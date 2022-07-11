@@ -1,5 +1,4 @@
 HELP.md
-src/main/resources/application.yml
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
@@ -35,5 +34,4 @@ out/
 /.nb-gradle/
 
 ### VS Code ###
-.vscode/
 .vscode/
