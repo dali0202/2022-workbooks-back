@@ -16,7 +16,7 @@ public class WorkbookQuestion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "workbook_id")
 	private Workbook workbook;
 	@ManyToOne(fetch = FetchType.LAZY)
