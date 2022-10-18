@@ -53,7 +53,7 @@ public class WorkbookService {
         workbookRepository.save(workbook);
     }
     private Workbook findWorkbookById(Long id) {
-        return workbookRepository.findById(id)
+        return workbookRepository.findByIdWithFetch(id)
                 .orElseThrow(() -> new EntityNotFoundException(ErrorCode.WORKBOOK_NOT_FOUND));
 	}
 }

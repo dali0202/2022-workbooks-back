@@ -42,7 +42,6 @@ public class Workbook extends BaseTimeEntity {
     public List<Question> getQuestions() {
         List<Question> questions = new ArrayList();
         workbookQuestions.forEach(workbookQuestion -> questions.add(workbookQuestion.getQuestion()));
-//        현재 한문제마다 한쿼리가 나감
         return questions;
     }
 }
