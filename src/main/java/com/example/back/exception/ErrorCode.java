@@ -18,11 +18,15 @@ public enum ErrorCode {
 
 	//AUTH
 	AUTH_ERROR(400, "AU_001", "인증 관련 오류가 발생했습니다."),
-	UNAUTHORIZED_REDIRECT_URI(403, "AU_002", "인증되지 않은 REDIRECT_URI 입니다."),
+	UNAUTHORIZED_REDIRECT_URI(401, "AU_002", "인증되지 않은 REDIRECT_URI 입니다."),
+	ACCESS_TOKEN_NOT_FOUND(401, "AU_003", "엑세스 토큰이 존재하지 않습니다."),
+	ACCESS_TOKEN_EXPIRED(401, "AU_004", "엑세스 토큰이 만료되었습니다."),
+	ACCESS_TOKEN_NOT_VALID(401, "AU_005", "엑세스 토큰의 서명이 일치하지 않습니다."),
 
 	//OAUTH2
 	OAUTH2_EMAIL_NOT_EXIST(400, "OA_001", "이메일 리소스가 존재하지 않습니다."),
-	OAUTH2_DUPLICATE_EMAIL(400, "OA_002", "다른 소셜로그인에서 이미 사용된 이메일입니다.");
+	OAUTH2_DUPLICATE_EMAIL(400, "OA_002", "다른 소셜로그인에서 이미 사용된 이메일입니다."),
+	OAUTH2_PROVIDER_NOT_EXIST(400, "OA_003", "프로바이더가 존재하지 않습니다.");
 
 	private final String code;
 	private final String message;

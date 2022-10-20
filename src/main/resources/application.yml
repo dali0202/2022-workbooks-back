@@ -13,57 +13,36 @@ spring:
         format_sql: true
     show-sql: true
 
-
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: 816668245656-5vcm65k47tjq3f7mppqlpecoo5qb36is.apps.googleusercontent.com
-            client-secret: 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
-            redirectUri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
-            scope:
-              - email
-              - profile
-          kakao:
-            client-id: d3a0fd443a4f80222b5565e5eea4966e
-            client-secret: CDIQFeo6PXAYYSPnY37tA90LLN7aDKzh
-            scope:
-              - account_email
-              - profile_nickname
-              - profile_image
-            redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
-            authorization-grant-type: authorization_code
-            client-name: kakao
-            client-authentication-method: POST
-          naver:
-            client-id: TXkw2k0nH1HXcMK432a2
-            client-secret: d3TsNoOKUQ
-            redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
-            authorization-grant-type: authorization_code
-            client-name: Naver
-            scope:
-              - email
-              - name
-              - profile_image
-        provider:
-          kakao:
-            authorization-uri: https://kauth.kakao.com/oauth/authorize
-            token-uri: https://kauth.kakao.com/oauth/token
-            user-info-uri: https://kapi.kakao.com/v2/user/me
-            user-name-attribute: id
-          naver:
-            authorization-uri: https://nid.naver.com/oauth2.0/authorize
-            user-info-uri: https://openapi.naver.com/v1/nid/me
-            token-uri: https://nid.naver.com/oauth2.0/token
-            user-name-attribute: response
-
 app:
   auth:
     token-secret: navysworkbooksjwtkeysecretnavysworkbooksjwtkeysecretnavysworkbooksjwtkeysecret
     token-expiration-time: 1209600000
-
-  oauth2:
-    authorized-redirect-uris:
-      - http://localhost:3000
-      - https://workbooks.ga
+  oauth:
+    google:
+      provider: google
+      client-id: 674664597564-8eomtt8p4rjjqnm26ep6m3srjfchonel.apps.googleusercontent.com
+      client-secret: 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
+      authorization-grant-type: authorization_code
+#      redirect-uri : http://localhost:3000/auth/google/callback
+      redirect-uri : https://workbooks.ga/auth/google/callback
+      token-uri: https://oauth2.googleapis.com/token
+#      authorization-uri: https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=674664597564-8eomtt8p4rjjqnm26ep6m3srjfchonel.apps.googleusercontent.com&scope=openid%20email&redirect_uri=http://localhost:3000/auth/google/callback
+      authorization-uri: https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=674664597564-8eomtt8p4rjjqnm26ep6m3srjfchonel.apps.googleusercontent.com&scope=openid%20email&redirect_uri=https://workbooks.ga/auth/google/callback
+    kakao:
+      provider: kakao
+      client-id: d3a0fd443a4f80222b5565e5eea4966e
+      client-secret: CDIQFeo6PXAYYSPnY37tA90LLN7aDKzh
+      authorization-grant-type: authorization_code
+#      redirect-uri : http://localhost:3000/auth/kakao/callback
+      redirect-uri : https://workbooks.ga/auth/kakao/callback
+      token-uri: https://kauth.kakao.com/oauth/token
+#      authorization-uri: https://kauth.kakao.com/oauth/authorize?client_id=d3a0fd443a4f80222b5565e5eea4966e&redirect_uri=http://localhost:3000/auth/kakao/callback&response_type=code
+    authorization-uri: https://kauth.kakao.com/oauth/authorize?client_id=d3a0fd443a4f80222b5565e5eea4966e&redirect_uri=https://workbooks.ga/auth/kakao/callback&response_type=code
+    naver:
+      provider: naver
+      client-id: TXkw2k0nH1HXcMK432a2
+      client-secret: d3TsNoOKUQ
+      authorization-grant-type: authorization_code
+      redirect-uri : http://localhost:3000/naver/kakao/callback
+      token-uri: https://nid.naver.com/oauth2.0/token
+      authorization-uri: https://nid.naver.com/oauth2.0/authorize

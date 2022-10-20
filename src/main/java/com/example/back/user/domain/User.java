@@ -1,8 +1,8 @@
 package com.example.back.user.domain;
 
 
-import com.example.back.auth.oauth2.domain.AuthProvider;
 import com.example.back.common.domain.BaseTimeEntity;
+import com.example.back.auth.auth.domain.AuthProvider;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

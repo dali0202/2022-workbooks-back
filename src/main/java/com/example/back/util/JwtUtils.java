@@ -1,74 +1,81 @@
 package com.example.back.util;
 
-import com.example.back.auth.UserPrincipal;
+import com.example.back.auth.auth.dto.OAuthAccessTokenResponse;
 import com.example.back.config.AppProperties;
-import com.example.back.user.domain.User;
-import com.example.back.user.domain.UserRepository;
-import com.nimbusds.oauth2.sdk.util.StringUtils;
+import com.example.back.exception.AuthException;
+import com.example.back.exception.ErrorCode;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.json.JSONObject;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.Optional;
+import java.util.*;
 
 @Component
 @RequiredArgsConstructor
 public class JwtUtils {
 
 	private final AppProperties appProperties;
-	private final UserRepository userRepository;
+	private static final String REGEX_DELIMITER = "\\.";
+	private static final String TOKEN_TYPE = "Bearer ";
 
-	public String createToken(Authentication authentication){
+	public String createToken(Long id, String name, String email){
 
-		UserPrincipal userPrincipal = (UserPrincipal)authentication.getPrincipal();
 		Date now = new Date();
 		Date expiryDate = new Date(now.getTime() + (int) appProperties.getAuth().getTokenExpirationTime());
-
 		return Jwts.builder()
-			.setSubject(userPrincipal.getEmail())
-			.setIssuedAt(new Date())
-			.setExpiration(expiryDate)
-			.signWith(SignatureAlgorithm.HS512, appProperties.getAuth().getTokenSecret().getBytes())
-			.compact();
+				.setSubject(String.valueOf(id))
+				.claim("name", name)
+				.claim("email", email)
+				.setIssuedAt(new Date())
+				.setExpiration(expiryDate)
+				.signWith(SignatureAlgorithm.HS512, appProperties.getAuth().getTokenSecret().getBytes())
+				.compact();
 	}
 
 	public String resolveToken(HttpServletRequest request) {
-		String bearerToken = request.getHeader("Authorization");
-		if (StringUtils.isNotBlank(bearerToken) && bearerToken.startsWith("Bearer ")) {
-			return bearerToken.substring(7);
-		}
-		return null;
+		String authorizationHeader = Optional.ofNullable(request.getHeader(HttpHeaders.AUTHORIZATION))
+				.orElseThrow(() -> new AuthException(ErrorCode.ACCESS_TOKEN_NOT_FOUND));
+		return authorizationHeader.substring(TOKEN_TYPE.length());
 	}
 
-	public boolean validateToken(String token) {
-		try {
-			return !getClaims(token).getExpiration().before(new Date());
-		} catch (Exception e) {
-			return false;
+	public void validateToken(String token) {
+		if (getClaims(token).getExpiration().before(new Date())) {
+			throw new AuthException(ErrorCode.ACCESS_TOKEN_EXPIRED
+			);
 		}
 	}
 
-	public Authentication getAuthentication(String token) {
-		Claims claims = getClaims(token);
-		Optional<User> user = userRepository.findByEmail(claims.getSubject());
-		UserPrincipal userPrincipal = UserPrincipal.create(user.get());
-		return new OAuth2AuthenticationToken(userPrincipal, userPrincipal.getAuthorities(),
-			userPrincipal.getAuthProvider());
+	public String getSubject(String token) {
+		return getClaims(token).getSubject();
 	}
 
 	private Claims getClaims(String token) {
-		return Jwts
-			.parserBuilder()
-			.setSigningKey(appProperties.getAuth().getTokenSecret().getBytes())
-			.build()
-			.parseClaimsJws(token)
-			.getBody();
+		try {
+			return Jwts
+					.parserBuilder()
+					.setSigningKey(appProperties.getAuth().getTokenSecret().getBytes())
+					.build()
+					.parseClaimsJws(token)
+					.getBody();
+		} catch (JwtException e) {
+			throw new AuthException(ErrorCode.ACCESS_TOKEN_NOT_VALID);
+		}
+	}
+
+	public Map<String, Object> parsePayload(OAuthAccessTokenResponse tokenResponse) {
+
+		String idToken = tokenResponse.getId_token();
+		String[] chunks = idToken.split(REGEX_DELIMITER);
+
+		Base64.Decoder decoder = Base64.getUrlDecoder();
+		String payload = new String(decoder.decode(chunks[1]));
+		JSONObject jsonObject = new JSONObject(payload);
+		return jsonObject.toMap();
 	}
 }

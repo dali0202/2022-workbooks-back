@@ -4,11 +4,12 @@ import com.example.back.question.domain.QQuestion;
 import com.example.back.question.domain.Question;
 import com.example.back.question.domain.QuestionRepositoryCustom;
 import com.example.back.workbook.dto.RangeRequest;
-import com.nimbusds.oauth2.sdk.util.StringUtils;
+//import com.nimbusds.oauth2.sdk.util.StringUtils;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
+import com.querydsl.core.util.StringUtils;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;
 
@@ -30,10 +31,12 @@ public class WorkbookRepositoryImpl implements WorkbookRepositoryCustom {
                 .limit(size)
                 .where(keywordContains(keyword), workbookIdLessThan(lastWorkbookId))
                 .orderBy(workbook.createdDate.desc())
+                .join(workbook.user)
+                .fetchJoin()
                 .fetch();
     }
     private BooleanExpression keywordContains(String keyword) {
-        return !StringUtils.isBlank(keyword) ? workbook.title.contains(keyword) : null;
+        return !StringUtils.isNullOrEmpty(keyword) ? workbook.title.contains(keyword) : null;
     }
     private BooleanExpression workbookIdLessThan(int lastWorkbookId) {
         return (lastWorkbookId != 0) ? workbook.id.lt(lastWorkbookId) : null;

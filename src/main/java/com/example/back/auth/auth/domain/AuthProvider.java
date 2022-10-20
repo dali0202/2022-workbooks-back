@@ -1,4 +1,4 @@
-package com.example.back.auth.oauth2.domain;
+package com.example.back.auth.auth.domain;
 
 public enum AuthProvider {
 	google,

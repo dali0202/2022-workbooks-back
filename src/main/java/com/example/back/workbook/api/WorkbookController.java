@@ -1,7 +1,10 @@
 package com.example.back.workbook.api;
 
-import com.example.back.auth.CurrentUser;
+//import com.example.back.auth.CurrentUser;
+import com.example.back.auth.auth.api.CurrentUser;
+import com.example.back.auth.auth.domain.LoginUser;
 import com.example.back.user.domain.User;
+import com.example.back.user.service.UserService;
 import com.example.back.workbook.dto.*;
 import com.example.back.workbook.service.WorkbookService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +22,7 @@ import java.util.List;
 public class WorkbookController {
     private static final String REDIRECT_URL = "/api/storages";
     private final WorkbookService workbookService;
+    private final UserService userService;
 
     @GetMapping
     public ResponseEntity<List<WorkbookResponse>> findWorkbooks(@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "0") int lastWorkbookId, @RequestParam @Max(100) int size) {
@@ -29,17 +33,20 @@ public class WorkbookController {
         return ResponseEntity.ok(workbookService.findWorkbook(id));
     }
     @PostMapping("/mock")
-    public ResponseEntity<?> createMock(@CurrentUser User user, @RequestBody @Valid MockRequest mockRequest) {
+    public ResponseEntity<?> createMock(@CurrentUser LoginUser loginUser, @RequestBody @Valid MockRequest mockRequest) {
+        User user = userService.getById(loginUser.getId());
         workbookService.saveMock(user, mockRequest);
         return ResponseEntity.created(URI.create(REDIRECT_URL)).build();
     }
     @PostMapping("/range")
-    public ResponseEntity<?> createRange(@CurrentUser User user, @RequestBody @Valid RangeRequest rangeRequest) {
+    public ResponseEntity<?> createRange(@CurrentUser LoginUser loginUser, @RequestBody @Valid RangeRequest rangeRequest) {
+        User user = userService.getById(loginUser.getId());
         workbookService.saveRange(user, rangeRequest);
         return ResponseEntity.created(URI.create(REDIRECT_URL)).build();
     }
     @PostMapping("/custom")
-    public ResponseEntity<?> createCustom(@CurrentUser User user, @RequestBody @Valid CustomRequest customRequest) {
+    public ResponseEntity<?> createCustom(@CurrentUser LoginUser loginUser, @RequestBody @Valid CustomRequest customRequest) {
+        User user = userService.getById(loginUser.getId());
         workbookService.saveCustom(user, customRequest);
         return ResponseEntity.created(URI.create(REDIRECT_URL)).build();
     }

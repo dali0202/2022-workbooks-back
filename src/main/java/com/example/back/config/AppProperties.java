@@ -6,29 +6,57 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
 @Setter
+@Configuration
 @ConfigurationProperties(prefix = "app")
 public class AppProperties {
 	private final Auth auth = new Auth();
-	private final OAuth2 oauth2 = new OAuth2();
-
+	private final Oauth oauth = new Oauth();
 	@Getter
 	@Setter
 	public static class Auth {
 		private String tokenSecret;
 		private long tokenExpirationTime;
 	}
-
 	@Getter
-	public static class OAuth2 {
-		private List<String> authorizedRedirectUris = new ArrayList<>();
-		public OAuth2 authorizedRedirectUris(List<String> authorizedRedirectUris) {
-			this.authorizedRedirectUris = authorizedRedirectUris;
-			return this;
-		}
+	@Setter
+	public static class Oauth {
+		private Google google;
+		private Kakao kakao;
+		private Naver naver;
+	}
+	@Getter
+	@Setter
+	public static class Google {
+		private String provider;
+		private String clientId;
+		private String clientSecret;
+		private String redirectUri;
+		private String tokenUri;
+		private String AuthorizationGrantType;
+		private String AuthorizationUri;
+	}
+	@Getter
+	@Setter
+	public static class Kakao {
+		private String provider;
+		private String clientId;
+		private String clientSecret;
+		private String redirectUri;
+		private String tokenUri;
+		private String AuthorizationGrantType;
+		private String AuthorizationUri;
+	}
+	@Getter
+	@Setter
+	public static class Naver {
+		private String provider;
+		private String clientId;
+		private String clientSecret;
+		private String redirectUri;
+		private String tokenUri;
+		private String AuthorizationGrantType;
+		private String AuthorizationUri;
 	}
 }
