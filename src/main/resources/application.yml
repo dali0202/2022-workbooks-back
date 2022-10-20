@@ -37,7 +37,7 @@ app:
       redirect-uri : https://workbooks.ga/auth/kakao/callback
       token-uri: https://kauth.kakao.com/oauth/token
 #      authorization-uri: https://kauth.kakao.com/oauth/authorize?client_id=d3a0fd443a4f80222b5565e5eea4966e&redirect_uri=http://localhost:3000/auth/kakao/callback&response_type=code
-    authorization-uri: https://kauth.kakao.com/oauth/authorize?client_id=d3a0fd443a4f80222b5565e5eea4966e&redirect_uri=https://workbooks.ga/auth/kakao/callback&response_type=code
+      authorization-uri: https://kauth.kakao.com/oauth/authorize?client_id=d3a0fd443a4f80222b5565e5eea4966e&redirect_uri=https://workbooks.ga/auth/kakao/callback&response_type=code
     naver:
       provider: naver
       client-id: TXkw2k0nH1HXcMK432a2
