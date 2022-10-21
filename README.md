@@ -1,10 +1,5 @@
-<br/>
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/93257581/176152557-c1fd7122-8979-433b-b1d5-aa97c65804e0.png" alt="workbooks-logo" height="260">
-</p>
-
 ## 서비스 소개
-워크북스는 수학 문제집 생성 서비스입니다. 학생들의 학습을 응원합니다.
+워크북스는 수학 문제집 생성 서비스입니다.
 <br/>
 ## 서비스 미리보기
 ![overview](https://user-images.githubusercontent.com/93257581/176131401-1e3852e6-ca4d-47a2-8d3d-a91c0060b94b.gif)
