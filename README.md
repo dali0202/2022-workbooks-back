@@ -49,6 +49,7 @@
 * 0.0.3
   * 커서기반 무한스크롤 구현
 * 0.0.4
+  * SSL 도입(Nginx 서버)
   * N+1 문제 해결
   * OpenID 도입 및 인증 flow 변경 (Spring Security, Spring OAuth2 client 의존 제거)
 
