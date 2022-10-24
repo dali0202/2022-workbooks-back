@@ -1,6 +1,5 @@
 package com.example.back.auth.auth.properties;
 
-import com.example.back.auth.auth.properties.ProviderProperties;
 import com.example.back.config.AppProperties;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
