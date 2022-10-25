@@ -1,5 +1,25 @@
 ## 서비스 소개
 워크북스는 수학 문제집 생성 서비스입니다.
+
+<br/>
+
+## 업데이트 내역
+* 0.0.1
+  * API 서버 완성(모의고사 제외)
+  * OAuth2 인증 완성
+* 0.0.2
+  * 문제집 게시판 페이지 완성
+  * 모의고사 페이지 완성
+  * 범위선택 페이지 완성
+  * 문제선택 페이지 완성
+* 0.0.3
+  * 커서기반 무한스크롤 구현
+* 0.0.4
+  * SSL 도입(Nginx 서버)
+  * N+1 문제 해결
+  * OpenID 도입 및 인증 flow 변경 (Spring Security, Spring OAuth2 client 의존 제거)
+  * Client <-> Nginx Http2 protocol로 변경
+  * 
 <br/>
 ## 서비스 미리보기
 ![overview](https://user-images.githubusercontent.com/93257581/176131401-1e3852e6-ca4d-47a2-8d3d-a91c0060b94b.gif)
@@ -34,25 +54,6 @@
 
 ## 아키텍쳐
 ![Architecture](https://user-images.githubusercontent.com/93257581/176100634-124251d4-681e-43c2-b2cb-9656a9694e1e.svg)
-
-<br/>
-
-## 업데이트 내역
-* 0.0.1
-  * API 서버 완성(모의고사 제외)
-  * OAuth2 인증 완성
-* 0.0.2
-  * 문제집 게시판 페이지 완성
-  * 모의고사 페이지 완성
-  * 범위선택 페이지 완성
-  * 문제선택 페이지 완성
-* 0.0.3
-  * 커서기반 무한스크롤 구현
-* 0.0.4
-  * SSL 도입(Nginx 서버)
-  * N+1 문제 해결
-  * OpenID 도입 및 인증 flow 변경 (Spring Security, Spring OAuth2 client 의존 제거)
-  * Client <-> Nginx Http2 protocol로 변경
 
 <br/>
 
