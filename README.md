@@ -19,7 +19,7 @@
   * N+1 문제 해결
   * OpenID 도입 및 인증 flow 변경 (Spring Security, Spring OAuth2 client 의존 제거)
   * Client <-> Nginx Http2 protocol로 변경
-  * 
+  
 <br/>
 
 ## 서비스 미리보기
@@ -47,14 +47,13 @@
 
 <br/>
 
-
-## 기술스택
-![Stacks](https://user-images.githubusercontent.com/93257581/176146068-851d924b-8008-431c-b8cc-5a2d2e880040.svg)
+## 아키텍쳐
+![Architecture](https://user-images.githubusercontent.com/93257581/176100634-124251d4-681e-43c2-b2cb-9656a9694e1e.svg)
 
 <br/>
 
-## 아키텍쳐
-![Architecture](https://user-images.githubusercontent.com/93257581/176100634-124251d4-681e-43c2-b2cb-9656a9694e1e.svg)
+## 기술스택
+![Stacks](https://user-images.githubusercontent.com/93257581/176146068-851d924b-8008-431c-b8cc-5a2d2e880040.svg)
 
 <br/>
 
