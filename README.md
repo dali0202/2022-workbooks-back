@@ -16,7 +16,6 @@
   * 커서기반 무한스크롤 구현
 * 0.0.4
   * SSL 도입(Nginx ssl termination)
-  * N+1 문제 해결
   * OpenID 도입 및 인증 flow 변경 (Spring Security, Spring OAuth2 client 의존 제거)
   * Client <-> Nginx Http2 protocol로 변경
   * Nginx upstream keep-alive 사용
