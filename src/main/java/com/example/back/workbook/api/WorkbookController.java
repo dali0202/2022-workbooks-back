@@ -1,6 +1,5 @@
 package com.example.back.workbook.api;
 
-//import com.example.back.auth.CurrentUser;
 import com.example.back.auth.auth.api.CurrentUser;
 import com.example.back.auth.auth.domain.LoginUser;
 import com.example.back.user.domain.User;
