@@ -15,7 +15,7 @@
 * 0.0.3
   * 커서기반 무한스크롤 구현
 * 0.0.4
-  * SSL 도입(Nginx ssl termination)
+  * TSL 1.3 도입(Nginx ssl termination)
   * OpenID 도입 및 인증 flow 변경 (Spring Security, Spring OAuth2 client 의존 제거)
   * Client <-> Nginx Http2 protocol로 변경
   * Nginx upstream keep-alive 사용
