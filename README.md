@@ -10,7 +10,7 @@
 * 0.0.2
   * 프론트 페이지 완성
 * 0.0.3
-  * 커서기반 무한스크롤 구현
+  * no offset 페이지네이션 구현
 * 0.0.4
   * TLS with session(Nginx ssl termination)
   * Load Balancing(Round Robin)
