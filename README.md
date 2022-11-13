@@ -12,7 +12,7 @@
 * 0.0.3
   * no offset 페이지네이션 구현
 * 0.0.4
-  * TLS with session(Nginx ssl termination)
+  * ~~TLS with session(Nginx ssl termination)~~
   * Load Balancing(Round Robin)
   * OpenID 도입 및 인증 flow 변경 (Spring Security, Spring OAuth2 client 의존 제거)
   * Client <-> Nginx Http2 protocol로 변경
