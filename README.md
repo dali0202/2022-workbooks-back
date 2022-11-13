@@ -48,12 +48,12 @@
 <br/>
 
 ## 아키텍쳐
-![Architecture](https://user-images.githubusercontent.com/93257581/176100634-124251d4-681e-43c2-b2cb-9656a9694e1e.svg)
+![Architecture](https://user-images.githubusercontent.com/93257581/201508920-9ae87e2c-4e08-4b8f-9883-662f2115dbe7.svg)
 
 <br/>
 
 ## 기술스택
-![Stacks](https://user-images.githubusercontent.com/93257581/176146068-851d924b-8008-431c-b8cc-5a2d2e880040.svg)
+![Stacks](https://user-images.githubusercontent.com/93257581/201508925-877f7d50-5869-4b2f-964a-20ce06336d9f.svg)
 
 <br/>
 
